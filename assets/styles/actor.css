@@ -50,8 +50,6 @@ img {
 }
 
 .actor_profile_pic img {
-  /* height: 100%;
-  width: auto; */
   align-self: auto;
 }
 
@@ -67,10 +65,6 @@ img {
   margin-right: 5%;
   font-size: 1vw;
 }
-
-/* .actor_movies {
-  justify-content: center;
-} */
 
 .actor_movies h2 {
   font-size: 1vw;
@@ -91,17 +85,6 @@ img {
   overflow: auto;
   white-space: nowrap;
 }
-
-/* #scroll {
-  width: 600px;
-  height: 180px;
-  margin: 100px auto;
-  background: #a3cbe0;
-  border: 2px solid #000;
-  overflow: auto;
-  white-space: nowrap;
-  box-shadow: 0 0 10px #000;
-} */
 
 .recommended-watchlist-movies {
   width: 50%;
@@ -215,14 +198,12 @@ img {
   column-gap: 1.8vw;
   width: 50%;
   justify-content: space-between;
-  /* flex-wrap: wrap; */
 }
 
 .movie-info {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  /* justify-content: right; */
   float: right;
   padding: 0.6vw;
 }
@@ -290,9 +271,6 @@ img {
   left: 0;
   right: 0;
   top: 0;
-  margin-top: -10px;
-  margin-left: -10px;
-  margin-right: -10px;
   height: var(--navbar-height);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }

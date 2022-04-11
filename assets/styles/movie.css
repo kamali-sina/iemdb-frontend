@@ -50,9 +50,6 @@ h2 {
   left: 0;
   right: 0;
   top: 0;
-  margin-top: -10px;
-  margin-left: -10px;
-  margin-right: -10px;
   height: var(--navbar-height);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
