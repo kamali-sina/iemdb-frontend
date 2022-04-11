@@ -33,9 +33,7 @@ img {
 a {
   color: inherit;
   text-decoration: none;
-} /* Globally */
-
-/* Each state */
+}
 
 a:visited {
   text-decoration: none;
@@ -67,11 +65,6 @@ a:active {
   margin-bottom: 0%;
 }
 
-/* .actor_profile_pic img {
-    width: 100%;
-    height: auto;
-  } */
-
 .information {
   flex-basis: 70%;
 }
@@ -79,10 +72,6 @@ a:active {
 .information_text {
   margin-right: 5%;
 }
-
-/* .actor_movies {
-    justify-content: center;
-  } */
 
 .recommended_movies {
   display: flex;
@@ -202,14 +191,12 @@ a:active {
   column-gap: 1.8vw;
   width: 50%;
   justify-content: space-between;
-  /* flex-wrap: wrap; */
 }
 
 .movie-info {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  /* justify-content: right; */
   float: right;
   padding: 0.6vw;
   width: 20%;
@@ -287,199 +274,4 @@ a:active {
   margin-right: -10px;
   height: var(--navbar-height);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-/* ..................................................... */
-
-.dropbtn {
-  background-color: white;
-  color: black;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  border-radius: 1.5vw;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-  display: flex;
-  flex-direction: row;
-  border-radius: 1.5vw;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  border-radius: 1.5vw;
-  text-align: right;
-  margin-top: 3.4vw;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  border-radius: 1.5vw;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown:hover .dropbtn {
-  background-color: #aaaaaa;
-}
-
-.dropbtn-user {
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  border-radius: 1.5vw;
-}
-
-.dropdown-user {
-  position: relative;
-  display: inline-block;
-  display: flex;
-  flex-direction: row;
-  border-radius: 1.5vw;
-}
-
-.dropdown-content-user {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  border-radius: 1.5vw;
-  right: 0;
-  left: auto;
-  text-align: right;
-  margin-top: 3.5vw;
-}
-
-.dropdown-content-user a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  border-radius: 1.5vw;
-}
-
-.dropdown-content-user a:hover {
-  background-color: #ddd;
-}
-
-.dropdown-user:hover .dropdown-content-user {
-  display: block;
-}
-
-/* .dropdown-user:hover .dropbtn-user {}  */
-
-.search-bar {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  border-radius: 1.5vw;
-}
-
-.search-text-input {
-  border-radius: 1.5vw;
-  border: none;
-}
-
-.custome-search-icon {
-  color: white;
-  font-size: 3vw;
-  /* margin-right: 20vw; */
-}
-
-.custome-search-input[type="text"] {
-  font-size: 24px;
-  direction: rtl;
-  text-align: center;
-}
-
-.movies-container {
-  width: 64vw;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  column-gap: 1vh;
-  row-gap: 1vh;
-  /* justify-content: space-evenly; */
-}
-
-.movie-card-img {
-  width: 15vw;
-  height: 15vw;
-}
-
-.movie-card {
-  width: 15vw;
-  height: 15vw;
-  position: relative;
-  text-align: center;
-  margin-top: 1%;
-  border-radius: 10px;
-  padding-bottom: 0%;
-}
-
-.movie-card:hover img {
-  opacity: 0.1;
-}
-
-.movie-card:hover .text {
-  opacity: 1;
-}
-
-.movie-card:hover {
-  background-color: #b12025;
-}
-
-.sort-by-div {
-  display: flex;
-  width: 10vw;
-  height: auto;
-  flex-direction: column;
-  background-color: var(--navbar-bg-color);
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-}
-
-.sort-by-text {
-  font-size: 0.9vw;
-  font-weight: bolder;
-}
-
-.sort-by-items {
-  font-size: 0.8vw;
-  font-weight: bold;
-}
-
-.main-column-div {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-.sorting-culomn {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
 }
