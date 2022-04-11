@@ -110,8 +110,6 @@ a:active {
   opacity: 0.8;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
 }
 
 .imdb_rating {
@@ -210,22 +208,6 @@ a:active {
   padding: 2%;
 }
 
-/* .recommended_movies {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  background-color: #4e4e50;
-  border-radius: 10px;
-  margin: 1%;
-  padding-left: 2%;
-  padding-right: 2%;
-  height: 25vw;
-  width: 68vw;
-  overflow: auto;
-  white-space: nowrap;
-} */
-
 .actors h2 {
   text-align: center;
 }
@@ -266,7 +248,6 @@ a:active {
 
 .textarea {
   border: 0px solid #ccc;
-  /* border-radius: 4px; */
   width: 100%;
   direction: rtl;
   background-color: white;
