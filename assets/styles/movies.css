@@ -145,7 +145,7 @@ a:active {
 }
 
 .page-container {
-  display: flex; /* or inline-flex */
+  display: flex;
   flex-direction: column;
   row-gap: 1vw;
 }
@@ -190,14 +190,12 @@ a:active {
   column-gap: 1.8vw;
   width: 50%;
   justify-content: space-between;
-  /* flex-wrap: wrap; */
 }
 
 .movie-info {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  /* justify-content: right; */
   float: right;
   padding: 0.6vw;
 }
@@ -271,8 +269,6 @@ a:active {
   height: var(--navbar-height);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
-
-/* ..................................................... */
 
 .dropbtn {
   background-color: white;
@@ -351,7 +347,7 @@ a:active {
   right: 0;
   left: auto;
   text-align: right;
-  margin-top: 3.5vw;
+  margin-top: var(--navbar-height);
 }
 
 .dropdown-content-user a {
@@ -374,8 +370,6 @@ a:active {
   display: block;
 }
 
-/* .dropdown-user:hover .dropbtn-user {}  */
-
 .search-bar {
   display: flex;
   flex-direction: row;
@@ -391,7 +385,6 @@ a:active {
 .custome-search-icon {
   color: white;
   font-size: 3vw;
-  /* margin-right: 20vw; */
 }
 
 .custome-search-input {
@@ -420,7 +413,6 @@ a:active {
   flex-wrap: wrap;
   column-gap: 1vh;
   row-gap: 1vh;
-  /* justify-content: space-evenly; */
 }
 
 .movie-card-img {
