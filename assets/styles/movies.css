@@ -33,9 +33,7 @@ img {
 a {
   color: inherit;
   text-decoration: none;
-} /* Globally */
-
-/* Each state */
+}
 
 a:visited {
   text-decoration: none;
@@ -67,11 +65,6 @@ a:active {
   margin-bottom: 0%;
 }
 
-/* .actor_profile_pic img {
-    width: 100%;
-    height: auto;
-  } */
-
 .information {
   flex-basis: 70%;
 }
@@ -79,10 +72,6 @@ a:active {
 .information_text {
   margin-right: 5%;
 }
-
-/* .actor_movies {
-    justify-content: center;
-  } */
 
 .recommended_movies {
   display: flex;
@@ -289,7 +278,7 @@ a:active {
   background-color: white;
   color: black;
   padding: 16px;
-  font-size: 1vw;
+  font-size: 1.3vh;
   border: none;
   border-radius: 1.5vw;
   font-family: vazirmatn;
@@ -312,7 +301,7 @@ a:active {
   z-index: 1;
   border-radius: 1.5vw;
   text-align: right;
-  margin-top: 3.4vw;
+  margin-top: 50px;
 }
 
 .dropdown-content a {
