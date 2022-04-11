@@ -1,0 +1,497 @@
+:root {
+  --navbar-bg-color: #b12025;
+  --background-color: #292929;
+  --capsule-background-color: #4e4e50;
+  --capsule-rounding-radius: 10px;
+  --text-color: white;
+  --navbar-height: 64px;
+}
+
+body {
+  background-color: #292929;
+  color: white;
+  font-family: vazirmatn, sans-serif;
+}
+
+h1,
+h2 {
+  direction: rtl;
+  text-align: center;
+}
+
+p {
+  direction: rtl;
+  text-align: right;
+}
+
+img {
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+} /* Globally */
+
+/* Each state */
+
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  text-decoration: none;
+  color: blue;
+}
+a:focus {
+  text-decoration: none;
+  color: yellow;
+}
+a:hover,
+a:active {
+  text-decoration: none;
+  color: black;
+}
+
+.actor_information {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.actor_profile_pic {
+  flex-basis: 30%;
+  margin: 1%;
+  margin-bottom: 0%;
+}
+
+/* .actor_profile_pic img {
+    width: 100%;
+    height: auto;
+  } */
+
+.information {
+  flex-basis: 70%;
+}
+
+.information_text {
+  margin-right: 5%;
+}
+
+/* .actor_movies {
+    justify-content: center;
+  } */
+
+.recommended_movies {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4e4e50;
+  border-radius: 10px;
+  margin: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.recommended-watchlist-movies {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4e4e50;
+  border-radius: 10px;
+
+  margin: 1%;
+}
+
+.recommended-watchlist-movie {
+  position: relative;
+  text-align: center;
+  margin-top: 1%;
+  border-radius: 10px;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+}
+
+.recommended-watchlist-movie:hover img {
+  opacity: 0.1;
+}
+
+.recommended-watchlist-movie:hover .text {
+  opacity: 1;
+}
+
+.recommended-watchlist-movie:hover {
+  background-color: #b12025;
+}
+
+.recommended_movie {
+  position: relative;
+  text-align: center;
+  margin-top: 1%;
+  border-radius: 10px;
+  padding-bottom: 0%;
+}
+
+.recommended_movie:hover img {
+  opacity: 0.1;
+}
+
+.recommended_movie:hover .text {
+  opacity: 1;
+}
+
+.recommended_movie:hover {
+  background-color: #b12025;
+}
+
+.text {
+  opacity: 0;
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.page-container {
+  display: flex; /* or inline-flex */
+  flex-direction: column;
+  row-gap: 1vw;
+}
+
+.custome-trash-icon {
+  font-size: 48px;
+  color: var(--navbar-bg-color);
+}
+
+.custome-user-icon {
+  font-size: 48px;
+  color: var(--capsule-background-color);
+}
+
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1.5vw;
+}
+
+.raitings {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 3vw;
+}
+
+.id-value-div {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-direction: row-reverse;
+}
+
+.capsule {
+  display: flex;
+  flex-direction: row;
+  background: var(--capsule-background-color);
+  border-radius: var(--capsule-rounding-radius);
+  column-gap: 1.8vw;
+  width: 50%;
+  justify-content: space-between;
+  /* flex-wrap: wrap; */
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* justify-content: right; */
+  float: right;
+  padding: 0.6vw;
+}
+
+.movie-name-div {
+  display: flex;
+}
+
+.trash-icon {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+.logo-image {
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.with-margin {
+  padding: 0px;
+}
+
+.img-rounded {
+  border-radius: 10px;
+}
+
+.persian-text {
+  direction: rtl;
+}
+
+.movie-name-text {
+  font-size: 1vw;
+}
+
+.capsule-img-rounded {
+  border-top-left-radius: var(--capsule-rounding-radius);
+  border-bottom-left-radius: var(--capsule-rounding-radius);
+}
+
+.custome-text-white {
+  color: white;
+  font-size: 0.8vw;
+}
+
+.custome-text-white-big {
+  color: white;
+  font-size: 0.9vw;
+}
+
+.custome-title-white {
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--navbar-bg-color);
+  left: 0;
+  right: 0;
+  top: 0;
+  margin-top: -10px;
+  margin-left: -10px;
+  margin-right: -10px;
+  height: var(--navbar-height);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ..................................................... */
+
+.dropbtn {
+  background-color: white;
+  color: black;
+  padding: 16px;
+  font-size: 1vw;
+  border: none;
+  border-radius: 1.5vw;
+  font-family: vazirmatn;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  border-radius: 1.5vw;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 1.5vw;
+  text-align: right;
+  margin-top: 3.4vw;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 1.5vw;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #aaaaaa;
+}
+
+.dropbtn-user {
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 1.5vw;
+}
+
+.dropdown-user {
+  position: relative;
+  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  border-radius: 1.5vw;
+}
+
+.dropdown-content-user {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 1.5vw;
+  right: 0;
+  left: auto;
+  text-align: right;
+  margin-top: 3.5vw;
+}
+
+.dropdown-content-user a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 1.5vw;
+}
+
+.custome-drop-icon {
+  color: var(--navbar-bg-color);
+}
+
+.dropdown-content-user a:hover {
+  background-color: #ddd;
+}
+
+.dropdown-user:hover .dropdown-content-user {
+  display: block;
+}
+
+/* .dropdown-user:hover .dropbtn-user {}  */
+
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 1.5vw;
+}
+
+.search-text-input {
+  border-radius: 1.5vw;
+  border: none;
+}
+
+.custome-search-icon {
+  color: white;
+  font-size: 3vw;
+  /* margin-right: 20vw; */
+}
+
+.custome-search-input {
+  width: 60%;
+  box-sizing: border-box;
+  border: 2px solid #b12025;
+  border-radius: 1.5vw;
+  font-size: 16px;
+  background-color: white;
+  background-image: url("/assets/images/search_icon.png");
+  background-position: center right;
+  background-size: 30px;
+  background-repeat: no-repeat;
+  padding: 12px 35px 12px 10px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  direction: rtl;
+  outline: none;
+  font-family: vazirmatn;
+}
+
+.movies-container {
+  width: 64vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 1vh;
+  row-gap: 1vh;
+  /* justify-content: space-evenly; */
+}
+
+.movie-card-img {
+  width: 15vw;
+  height: 15vw;
+}
+
+.movie-card {
+  width: 15vw;
+  height: 15vw;
+  position: relative;
+  text-align: center;
+  margin-top: 1%;
+  border-radius: 10px;
+  padding-bottom: 0%;
+}
+
+.movie-card:hover img {
+  opacity: 0.4;
+}
+
+.movie-card:hover .text {
+  opacity: 1;
+}
+
+.movie-card:hover {
+  background-color: #b12025;
+}
+
+.sort-by-div {
+  display: flex;
+  width: 10vw;
+  height: auto;
+  flex-direction: column;
+  background-color: var(--navbar-bg-color);
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.sort-by-text {
+  font-size: 0.9vw;
+  font-weight: bolder;
+}
+
+.sort-by-items {
+  font-size: 0.8vw;
+  font-weight: bold;
+}
+
+.main-column-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.sorting-culomn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
