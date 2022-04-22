@@ -1,24 +1,3 @@
-// function GradesSection(props) {
-//     if (!props.isLoggedin)
-//         return (<h1>grades section</h1>);
-
-//     var coursesInTerms = Object.values(props.gradedCources).reduce(function(r, o){
-//         var k = o.term;   // unique `loc` key
-//         if (r[k] || (r[k]=[])) r[k].push({term:k, code: o.code, course: o.course, grade: o.grade});
-//         return r;
-//     }, {});
-
-//     return (
-//         <div className="col-lg-8 ">
-//             <section className="workbook_section">
-//                 {Object.values(coursesInTerms).map(termCourses => (
-//                     <TermGradesTable courses={termCourses}/>
-//                 ))}
-//             </section>
-//         </div>
-//     );
-// }
-
 import '../styles/watchlist.css';
 import React from 'react';
 import Navbar from '../components/Navbar'
