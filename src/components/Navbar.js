@@ -4,21 +4,21 @@ class Navbar extends React.Component {
     render() {
         return (
             <header id="navbar">
-                <nav class="navbar">
+                <nav className="navbar">
                     {/* TODO: Add href */}
-                    <a class="home-link" href="">
-                        <div class="logo-image">
+                    <a className="home-link" href="">
+                        <div className="logo-image">
                             <img
-                                    class="img-responsive img-rounded"
+                                    className="img-responsive img-rounded"
                                     src={process.env.PUBLIC_URL + '/logo.png'}
                                     alt="logo"
                             />
                         </div>
                     </a>
                     {/* TODO: Add href */}
-                    <a class="home-link" href="">
-                        <div class="logo-image">
-                            <i class="fa fa-user custome-user-icon"></i>
+                    <a className="home-link" href="">
+                        <div className="logo-image">
+                            <i className="fa fa-user custome-user-icon"></i>
                         </div>
                     </a>
                 </nav>
