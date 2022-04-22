@@ -1,14 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Route, Link, BrowserRouter, Routes } from 'react-router-dom'
 import './index.css';
 import WatchlistPage from './watchlist/WatchlistPage';
+import App from './App'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const routs = (
+  < BrowserRouter >
+      <Routes>
+        <Route exact path="/" element={<App/>}/>
+        <Route exact path="/watchlist" element={<WatchlistPage/>}/>
+        {/* <Route path="*" element={<NotFound/>}/> */}
+      </Routes>
+  </ BrowserRouter >
+);
 root.render(
-  <React.StrictMode>
-    <WatchlistPage />
-  </React.StrictMode>
+  routs
 );
 
 // If you want to start measuring performance in your app, pass a function
