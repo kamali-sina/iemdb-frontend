@@ -17,9 +17,9 @@ function CapsuleImage(props) {
 
 function ActorMovieCapsule(props) {
   return (
-    <a class="recommended_movie rounded custome-text-white" href="">
+    <a className="recommended_movie rounded custome-text-white" href="">
       <img alt={props.movie.name} src={props.movie.image} />
-      <div class="text">
+      <div className="text">
         {props.movie.name} <br />
         {props.movie.imdbRate}
       </div>
@@ -30,16 +30,16 @@ function ActorMovieCapsule(props) {
 function ActorInformationCapsule(props) {
   return (
     <div className="information">
-      <h1 class="custome-text-white">مشخصات بازیگر</h1>
-      <div class="information_text custome-text-white">
+      <h1 className="custome-text-white">مشخصات بازیگر</h1>
+      <div className="information_text custome-text-white">
         <p>نام: {props.actor.name}</p>
         <p>تاریخ تولد: {props.actor.birthDate}</p>
         <p>ملیت: {props.actor.nationality}</p>
         <p>تعداد فیلم‌ها: {props.movies.length}</p>
       </div>
       <div className="actor_movies">
-        <h2 class="custome-text-white">فیلم‌ها</h2>
-        <div class="recommended_movies rounded">
+        <h2 className="custome-text-white">فیلم‌ها</h2>
+        <div className="recommended_movies rounded">
           {props.movies.map(function (object, i) {
             return <ActorMovieCapsule key={object.id} movie={object} />;
           })}
@@ -56,7 +56,7 @@ class ActorInformation extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://127.0.0.1:8080/movies/actors/2063")
+    fetch("http://127.0.0.1:8080/movies/actors/1027")
       .then((resp) => resp.json())
       .then((data) => {
         this.setState((prevState) => ({
@@ -96,7 +96,7 @@ class Actor extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://127.0.0.1:8080/actors/2063")
+    fetch("http://127.0.0.1:8080/actors/1027")
       .then((resp) => resp.json())
       .then((data) => {
         this.setState((prevState) => ({
