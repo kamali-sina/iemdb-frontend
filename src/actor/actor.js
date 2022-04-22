@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import "../styles/actor.css";
+import MoviesCapsule from "../components/MoviesCapsule";
 
 function CapsuleImage(props) {
   return (
@@ -45,6 +46,8 @@ function ActorInformationCapsule(props) {
           })}
         </div>
       </div>
+      {/* TODO: USE this instead
+      <MoviesCapsule movies={props.movies} title="فیلم ها" /> */}
     </div>
   );
 }
