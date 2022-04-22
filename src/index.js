@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { Route, Link, BrowserRouter, Routes } from "react-router-dom";
 import "./index.css";
 import WatchlistPage from "./watchlist/WatchlistPage";
+import LoginPage from "./users/LoginPage";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import ActorPage from "./actor/actor";
@@ -14,6 +15,7 @@ const routs = (
       <Route exact path="/" element={<App />} />
       <Route exact path="/actor" element={<ActorPage />} />
       <Route exact path="/watchlist" element={<WatchlistPage />} />
+      <Route exact path="/login" element={<LoginPage />} />
       {/* <Route path="*" element={<NotFound/>}/> */}
     </Routes>
   </BrowserRouter>
