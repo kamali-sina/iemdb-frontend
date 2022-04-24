@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import "../styles/actor.css";
 import MoviesCapsule from "../components/MoviesCapsule";
+import { useParams } from "react-router-dom";
 
 function CapsuleImage(props) {
   return (
@@ -18,7 +19,10 @@ function CapsuleImage(props) {
 
 function ActorMovieCapsule(props) {
   return (
-    <a className="recommended_movie rounded custome-text-white" href="">
+    <a
+      className="recommended_movie rounded custome-text-white"
+      href={"/movie/" + props.movie.id}
+    >
       <img alt={props.movie.name} src={props.movie.image} />
       <div className="text">
         {props.movie.name} <br />
@@ -59,7 +63,7 @@ class ActorInformation extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://127.0.0.1:8080/movies/actors/1027")
+    fetch("http://127.0.0.1:8080/movies/actors/" + this.props.id)
       .then((resp) => resp.json())
       .then((data) => {
         this.setState((prevState) => ({
@@ -86,7 +90,7 @@ class ActorCapsule extends React.Component {
     return (
       <div className="actor_information">
         <CapsuleImage actor={this.props.actor} />
-        <ActorInformation actor={this.props.actor} />
+        <ActorInformation actor={this.props.actor} id={this.props.id} />
       </div>
     );
   }
@@ -99,7 +103,7 @@ class Actor extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://127.0.0.1:8080/actors/1027")
+    fetch("http://127.0.0.1:8080/actors/" + this.props.id)
       .then((resp) => resp.json())
       .then((data) => {
         this.setState((prevState) => ({
@@ -112,7 +116,7 @@ class Actor extends React.Component {
   render() {
     return (
       <div>
-        <ActorCapsule actor={this.state.items} />
+        <ActorCapsule actor={this.state.items} id={this.props.id} />
       </div>
     );
   }
@@ -123,10 +127,15 @@ class ActorPage extends React.Component {
     return (
       <div>
         <Navbar />
-        <Actor />
+        <Actor id={this.props.id} />
       </div>
     );
   }
 }
 
-export default ActorPage;
+function ActorPageWrapper() {
+  const { id } = useParams();
+  return <ActorPage id={id} />;
+}
+
+export default ActorPageWrapper;
