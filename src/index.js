@@ -2,11 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Route, Link, BrowserRouter, Routes } from "react-router-dom";
 import "./index.css";
-import WatchlistPage from "./watchlist/WatchlistPage";
-import LoginPage from "./users/LoginPage";
+import WatchlistPage from "./watchlist/Watchlist";
+import LoginPage from "./users/Login";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import ActorPage from "./actor/actor";
+import ActorPage from "./actor/Actor";
+import MoviesPage from "./movies/Movies";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const routs = (
@@ -16,6 +17,7 @@ const routs = (
       <Route exact path="/actor" element={<ActorPage />} />
       <Route exact path="/watchlist" element={<WatchlistPage />} />
       <Route exact path="/login" element={<LoginPage />} />
+      <Route exact path="/movies" element={<MoviesPage />} />
       {/* <Route path="*" element={<NotFound/>}/> */}
     </Routes>
   </BrowserRouter>
