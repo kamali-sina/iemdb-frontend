@@ -9,6 +9,7 @@ import reportWebVitals from "./reportWebVitals";
 import ActorPage from "./actor/Actor";
 import MoviesPage from "./movies/Movies";
 import SignupPage from "./users/SignupPage";
+import MoviePageWrapper from "./movie/movie";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const routs = (
@@ -16,6 +17,7 @@ const routs = (
     <Routes>
       <Route exact path="/" element={<App />} />
       <Route exact path="/actor/:id" element={<ActorPage />} />
+      <Route exact path="/movie/:id" element={<MoviePageWrapper />} />
       <Route exact path="/watchlist" element={<WatchlistPage />} />
       <Route exact path="/login" element={<LoginPage />} />
       <Route exact path="/movies" element={<MoviesPage />} />
