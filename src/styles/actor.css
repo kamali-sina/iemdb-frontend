@@ -84,18 +84,6 @@ img {
   width: auto;
 }
 
-.recommended-watchlist-movie:hover img {
-  opacity: 0.1;
-}
-
-.recommended-watchlist-movie:hover .text {
-  opacity: 1;
-}
-
-.recommended-watchlist-movie:hover {
-  background-color: var(--navbar-bg-color);
-}
-
 .recommended_movie {
   position: relative;
   text-align: center;
