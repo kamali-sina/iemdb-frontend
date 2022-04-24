@@ -8,6 +8,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import ActorPage from "./actor/Actor";
 import MoviesPage from "./movies/Movies";
+import SignupPage from "./users/SignupPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const routs = (
@@ -18,6 +19,7 @@ const routs = (
       <Route exact path="/watchlist" element={<WatchlistPage />} />
       <Route exact path="/login" element={<LoginPage />} />
       <Route exact path="/movies" element={<MoviesPage />} />
+      <Route exact path="/signup" element={<SignupPage />} />
       {/* <Route path="*" element={<NotFound/>}/> */}
     </Routes>
   </BrowserRouter>
