@@ -1,18 +1,6 @@
-// FIXME: Imports affect eachother!!!
-// import '../styles/login.css';
+import '../styles/localbootstrap.scss';
 import React from 'react';
-
-function IemdbLogo() {
-    return (
-        <div className="col-md-8 col-lg-7 col-xl-6">
-            <img
-            alt="Phone image"
-            className="img-fluid"
-            src={process.env.PUBLIC_URL + '/logo.png'}
-            />
-        </div>
-    );
-}
+import IemdbLogo from './IemdbLogo';
 
 function LoginForm() {
     // TODO: Add redirect after successful login!
@@ -50,11 +38,13 @@ function LoginForm() {
 class LoginPage extends React.Component {
     render() {
         return (
-            <div className="vh-100">
-                <div className="container py-5 h-100">
-                    <div className="row d-flex align-items-center justify-content-center h-100">
-                        <IemdbLogo />
-                        <LoginForm />
+            <div className='local-bootstrap'>
+                <div className="vh-100">
+                    <div className="container py-5 h-100">
+                        <div className="row d-flex align-items-center justify-content-center h-100">
+                            <IemdbLogo />
+                            <LoginForm />
+                        </div>
                     </div>
                 </div>
             </div>
