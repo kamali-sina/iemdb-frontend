@@ -15,23 +15,28 @@ class MoviesNavbar extends React.Component {
                         </div>
                     </a>
 
-                    <form class="search-bar">
+                    <form action="http://127.0.0.1:8080/movies/search" method="get" class="search-bar">
                         <div class="dropdown">
-                            <button type="submit" class="dropbtn">
+                            <button type="button" class="dropbtn">
                                 جستجو بر اساس
                                 <i class="fa fa-sort-desc custome-drop-icon"></i>
                             </button>
 
                             <div class="dropdown-content">
-                                <a href="">نام</a>
-                                <a href="">ژانر</a>
-                                <a href="">تاریخ تولید</a>
+                                <button type="submit" class="dropbtn" name="filter" value="name">
+                                    نام
+                                </button>
+                                <br></br>
+                                <button type="submit" class="dropbtn" name="filter" value="genre">
+                                    ژانر
+                                </button>
+                                <br></br>
+                                <button type="submit" class="dropbtn" name="filter" value="releaseYear">
+                                    تاریخ تولید
+                                </button>
                             </div>
                         </div>
-                        <input
-                        type="text"
-                        class="search-text-input custome-search-input"
-                        />
+                        <input type="text" class="search-text-input custome-search-input" name="searchValue"/>
                     </form>
 
                     <div class="dropdown-user">
@@ -41,7 +46,7 @@ class MoviesNavbar extends React.Component {
 
                         <div class="dropdown-content-user">
                             <a href="/login">ثبت نام</a>
-                            <a href="">ورود</a>
+                            <a href="/signup">ورود</a>
                         </div>
                     </div>
                 </nav>
