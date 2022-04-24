@@ -1,5 +1,5 @@
 import React from 'react';
-
+// TODO: Fix this Component
 class MoviesNavbar extends React.Component {
     render() {
         return (
@@ -40,7 +40,7 @@ class MoviesNavbar extends React.Component {
                         </div>
 
                         <div class="dropdown-content-user">
-                            <a href="">ثبت نام</a>
+                            <a href="/login">ثبت نام</a>
                             <a href="">ورود</a>
                         </div>
                     </div>
