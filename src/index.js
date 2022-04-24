@@ -15,7 +15,7 @@ const routs = (
   <BrowserRouter>
     <Routes>
       <Route exact path="/" element={<App />} />
-      <Route exact path="/actor" element={<ActorPage />} />
+      <Route exact path="/actor/:id" element={<ActorPage />} />
       <Route exact path="/watchlist" element={<WatchlistPage />} />
       <Route exact path="/login" element={<LoginPage />} />
       <Route exact path="/movies" element={<MoviesPage />} />
