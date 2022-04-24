@@ -136,12 +136,12 @@ a:active {
   background-color: #b12025;
 }
 
-.text {
-  opacity: 0;
-  position: absolute;
+.movie_text {
+  position: relative;
   top: 3%;
   left: 50%;
   transform: translate(-50%, 0%);
+  color: black;
 }
 
 .page-container {
