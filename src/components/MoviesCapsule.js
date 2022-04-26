@@ -1,24 +1,24 @@
-import React from "react";
+import React, {useState, useEffect}  from "react";
 import '../styles/moviesCapsule.css'
 
-function SingleMovieCapsule(props) {
+function SingleMovieCapsule({movie}) { 
     return (
       <a className="movies-capsule-movie rounded custome-text-white" href="">
-        <img alt={props.movie.name} src={props.movie.image} />
+        <img alt={movie.name} src={movie.image} />
         <div className="text">
-          {props.movie.name} <br />
-          {props.movie.imdbRate}
+          {movie.name} <br />
+          {movie.imdbRate}
         </div>
       </a>
     );
 }
 
-function MoviesCapsule(props) {
+function MoviesCapsule({title, movies}) {
     return (
         <div>
-            <h2 className="custome-text-white">{props.title}</h2>
+            <h2 className="custome-text-white">{title}</h2>
             <div className="movies-capsule rounded">
-            {props.movies.map(function (object, i) {
+            {movies.map(function (object, i) {
                 return <SingleMovieCapsule key={object.id} movie={object} />;
             })}
             </div>
