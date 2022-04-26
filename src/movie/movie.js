@@ -1,141 +1,121 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/movie.css";
-import { useParams } from "react-router-dom";
 
 import Comment from "./MovieComment";
 import Actor from "./MovieActor";
 import Information from "./MovieInformation";
 import Wallpaper from "./MovieWallpaper";
+import { useParams } from "react-router-dom";
 
-class CommentsCapsule extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { items: [], DataisLoaded: false };
-  }
+function CommentsCapsule({ id, notify }) {
+  const [items, setItems] = useState([]);
+  const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
-  componentDidMount() {
-    fetch("http://127.0.0.1:8080/movies/" + this.props.id + "/comments")
+  function doFetch() {
+    fetch("http://127.0.0.1:8080/movies/" + id + "/comments")
       .then((resp) => resp.json())
       .then((data) => {
-        this.setState((prevState) => ({
-          items: data.data,
-          DataisLoaded: true,
-        }));
+        setItems(data.data);
+        setDataIsLoaded(true);
       });
   }
 
-  render() {
-    let comments = this.state.items;
-    console.log({ status: this.state.DataisLoaded });
-    console.log({ comments });
-    console.log({ id: this.props.id });
+  useEffect(() => {
+    doFetch();
+  }, [items]);
 
-    return (
-      <div className="comments">
-        <h2>دیدگاه‌ها</h2>
-        <form className="comment">
-          <div className="name">دیدگاه خود را اضافه کنید:</div>
-          <hr />
-          <textarea className="textarea"></textarea>
-          <a className="button" href="">
-            ثبت
-          </a>
-        </form>
-        {comments.map(function (object, i) {
-          return <Comment key={object.id} comment={object} />;
+  return (
+    <div className="comments">
+      <h2>دیدگاه‌ها</h2>
+      <form className="comment">
+        <div className="name">دیدگاه خود را اضافه کنید:</div>
+        <hr />
+        <textarea className="textarea"></textarea>
+        <a className="button" href="">
+          ثبت
+        </a>
+      </form>
+      {items.map(function (object, i) {
+        return <Comment key={object.id} comment={object} notify={notify} />;
+      })}
+    </div>
+  );
+}
+
+function ActorsCapsule({ id, notify }) {
+  const [items, setItems] = useState([]);
+  const [dataIsLoaded, setDataIsLoaded] = useState(false);
+
+  function doFetch() {
+    fetch("http://127.0.0.1:8080/movies/" + id + "/actors")
+      .then((resp) => resp.json())
+      .then((data) => {
+        setItems(data.data);
+        setDataIsLoaded(true);
+      });
+  }
+
+  useEffect(() => {
+    doFetch();
+  }, [items]);
+
+  return (
+    <div class="actors">
+      <h2>بازیگران</h2>
+      <div class="actors_info">
+        {items.map(function (object, i) {
+          return <Actor key={object.id} actor={object} notify={notify} />;
         })}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-class ActorsCapsule extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { items: [], DataisLoaded: false };
-  }
+function MovieCapsule({ id, movie, notify }) {
+  return (
+    <div className="movie_page">
+      <Wallpaper movie={movie} />
+      <Information movie={movie} />
+      <ActorsCapsule id={id} movie={movie} />
+      <CommentsCapsule id={id} movie={movie} />
+    </div>
+  );
+}
 
-  componentDidMount() {
-    fetch("http://127.0.0.1:8080/movies/" + this.props.id + "/actors")
+function Movie({ id, notify }) {
+  const [items, setItems] = useState([]);
+  const [dataIsLoaded, setDataIsLoaded] = useState(false);
+
+  function doFetch() {
+    fetch("http://127.0.0.1:8080/movies/" + id)
       .then((resp) => resp.json())
       .then((data) => {
-        this.setState((prevState) => ({
-          items: data.data,
-          DataisLoaded: true,
-        }));
+        setItems(data.data);
+        setDataIsLoaded(true);
       });
   }
 
-  render() {
-    var actors = this.state.items;
+  useEffect(() => {
+    doFetch();
+  }, [items]);
 
-    return (
-      <div class="actors">
-        <h2>بازیگران</h2>
-        <div class="actors_info">
-          {actors.map(function (object, i) {
-            return <Actor key={object.id} actor={object} />;
-          })}
-        </div>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <MovieCapsule id={id} movie={items} notify={notify} />
+    </div>
+  );
 }
 
-class MovieCapsule extends React.Component {
-  render() {
-    return (
-      <div className="movie_page">
-        <Wallpaper movie={this.props.movie} />
-        <Information movie={this.props.movie} />
-        <ActorsCapsule movie={this.props.movie} id={this.props.id} />
-        <CommentsCapsule movie={this.props.movie} id={this.props.id} />
-      </div>
-    );
-  }
-}
-
-class Movie extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { items: [], DataisLoaded: false };
-  }
-
-  componentDidMount() {
-    fetch("http://127.0.0.1:8080/movies/" + this.props.id)
-      .then((resp) => resp.json())
-      .then((data) => {
-        this.setState((prevState) => ({
-          items: data.data,
-          DataisLoaded: true,
-        }));
-      });
-  }
-
-  render() {
-    return (
-      <div>
-        <MovieCapsule movie={this.state.items} id={this.props.id} />
-      </div>
-    );
-  }
-}
-
-class MoviePage extends React.Component {
-  render() {
-    return (
-      <div>
-        <Navbar />
-        <Movie id={this.props.id} />
-      </div>
-    );
-  }
-}
-
-function MoviePageWrapper() {
+function MoviePage({ notify }) {
   const { id } = useParams();
-  return <MoviePage id={id} />;
+
+  return (
+    <div>
+      <Navbar />
+      <Movie id={id} notify={notify} />
+    </div>
+  );
 }
 
-export default MoviePageWrapper;
+export default MoviePage;
