@@ -230,6 +230,7 @@ a:active {
   object-fit: cover;
   border-radius: 50%;
   object-position: center 0%;
+  display: block;
 }
 
 .comments {
@@ -271,6 +272,12 @@ a:active {
 }
 
 .text {
+  direction: rtl;
+  color: black;
+  font-size: 1vw;
+}
+
+.movie_text {
   direction: rtl;
   color: black;
   font-size: 1vw;
