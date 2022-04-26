@@ -1,7 +1,7 @@
 function Comment(props) {
   return (
     <div className="comment">
-      <div className="name">{props.comment.name}</div>
+      <div className="name">{props.comment.nickname}</div>
       <hr />
       <div className="movie_text">{props.comment.text}</div>
       <div className="icons">
