@@ -10,18 +10,23 @@ import ActorPage from "./actor/Actor";
 import MoviesPage from "./movies/Movies";
 import SignupPage from "./users/SignupPage";
 import MoviePageWrapper from "./movie/movie";
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+toast.configure();
+const notify = (message) => toast(message);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const routs = (
   <BrowserRouter>
+  <ToastContainer />
     <Routes>
       <Route exact path="/" element={<App />} />
-      <Route exact path="/actor/:id" element={<ActorPage />} />
-      <Route exact path="/movie/:id" element={<MoviePageWrapper />} />
-      <Route exact path="/watchlist" element={<WatchlistPage />} />
-      <Route exact path="/login" element={<LoginPage />} />
-      <Route exact path="/movies" element={<MoviesPage />} />
-      <Route exact path="/signup" element={<SignupPage />} />
+      <Route exact path="/actor/:id" element={<ActorPage notify={notify} />} />
+      <Route exact path="/movie/:id" element={<MoviePageWrapper notify={notify} />} />
+      <Route exact path="/watchlist" element={<WatchlistPage notify={notify} />} />
+      <Route exact path="/login" element={<LoginPage notify={notify} />} />
+      <Route exact path="/movies" element={<MoviesPage notify={notify} />} />
+      <Route exact path="/signup" element={<SignupPage notify={notify} />} />
       {/* <Route path="*" element={<NotFound/>}/> */}
     </Routes>
   </BrowserRouter>
