@@ -1,86 +1,71 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "../styles/actor.css";
-import MoviesCapsule from "../components/MoviesCapsule";
-import { useParams } from "react-router-dom";
 import ActorImage from "./ActorImage";
 import ActorInformation from "./ActorInformation";
 
-class ActorInformationClass extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { items: [], DataisLoaded: false };
-  }
+function ActorInformationClass({ id, actor, notify }) {
+  const [items, setItems] = useState([]);
+  const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
-  componentDidMount() {
-    fetch("http://127.0.0.1:8080/movies/actors/" + this.props.id)
+  function doFetch() {
+    fetch("http://127.0.0.1:8080/movies/actors/" + id)
       .then((resp) => resp.json())
       .then((data) => {
-        this.setState((prevState) => ({
-          items: data.data,
-          DataisLoaded: true,
-        }));
+        setItems(data.data);
+        setDataIsLoaded(true);
       });
   }
 
-  render() {
-    return (
-      <ActorInformation actor={this.props.actor} movies={this.state.items} />
-    );
-  }
+  useEffect(() => {
+    doFetch();
+  }, [items]);
+
+  return <ActorInformation actor={actor} movies={items} />;
 }
 
-class ActorCapsule extends React.Component {
-  render() {
-    return (
-      <div className="actor_page-actor_information">
-        <ActorImage actor={this.props.actor} />
-        <ActorInformationClass actor={this.props.actor} id={this.props.id} />
-      </div>
-    );
-  }
+function ActorCapsule({ id, actor, notify }) {
+  return (
+    <div className="actor_page-actor_information">
+      <ActorImage actor={actor} notify={notify} />
+      <ActorInformationClass id={id} actor={actor} notify={notify} />
+    </div>
+  );
 }
 
-class Actor extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { items: [], DataisLoaded: false };
-  }
+function Actor({ id, notify }) {
+  const [items, setItems] = useState([]);
+  const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
-  componentDidMount() {
-    fetch("http://127.0.0.1:8080/actors/" + this.props.id)
+  function doFetch() {
+    fetch("http://127.0.0.1:8080/actors/" + id)
       .then((resp) => resp.json())
       .then((data) => {
-        this.setState((prevState) => ({
-          items: data.data,
-          DataisLoaded: true,
-        }));
+        setItems(data.data);
+        setDataIsLoaded(true);
       });
   }
 
-  render() {
-    return (
-      <div>
-        <ActorCapsule actor={this.state.items} id={this.props.id} />
-      </div>
-    );
-  }
+  useEffect(() => {
+    doFetch();
+  }, [items]);
+
+  return (
+    <div>
+      <ActorCapsule id={id} actor={items} notify={notify} />
+    </div>
+  );
 }
 
-class ActorPage extends React.Component {
-  render() {
-    return (
-      <div>
-        <Navbar />
-        <Actor id={this.props.id} />
-      </div>
-    );
-  }
-}
-
-function ActorPageWrapper() {
+function ActorPage({ notify }) {
   const { id } = useParams();
-  return <ActorPage id={id} />;
+  return (
+    <div>
+      <Navbar />
+      <Actor id={id} notify={notify} />
+    </div>
+  );
 }
 
-export default ActorPageWrapper;
+export default ActorPage;
