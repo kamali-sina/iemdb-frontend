@@ -17,7 +17,7 @@ function LoginForm({notify}) {
         setPassword(event.target.value)
     }
 
-    async function handleSubmit(event, notify) {
+    async function handleSubmit(event) {
         event.preventDefault();
         const response = await fetch('http://127.0.0.1:8080/users/login', { 
             headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
@@ -39,7 +39,7 @@ function LoginForm({notify}) {
   
     return (
         <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-            <form onSubmit={(event) => {handleSubmit(event, notify)}}>
+            <form onSubmit={handleSubmit}>
                 <div className="form-outline mb-4">
                     <input
                     className="form-control form-control-lg"
