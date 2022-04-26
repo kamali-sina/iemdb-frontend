@@ -5,16 +5,16 @@ import { useNavigate } from "react-router-dom";
 
 
 function LoginForm({notify}) {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
   
     function handleEmailChange (event) {    
-        setEmail(event.target.value) 
+        setEmail(event.target.value);
     }
 
     function handlePasswordChange(event) {    
-        setPassword(event.target.value)
+        setPassword(event.target.value);
     }
 
     async function handleSubmit(event) {
@@ -25,7 +25,7 @@ function LoginForm({notify}) {
             mode: 'cors', 
             redirect: 'follow',
             body: JSON.stringify({ "email": email, "password": password })       
-        })
+        });
         const data = await response.json();
         console.log('A name was submitted: ' + data.status + ': ' + data.data);
         if (data.status == 200) {
