@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useNavigate } from "react-router-dom"; 
 
 function CapsuleImage(props) {
     return (
@@ -43,13 +44,33 @@ function CapsuleMovieRatings(props) {
 }
 
 function CapsuleMovieInfo(props) {
+    const navigate = useNavigate();
+
+    async function handleSubmit(event, movieId) {
+        event.preventDefault();
+        const response = await fetch('http://127.0.0.1:8080/users/watchlist', { 
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            method: 'DELETE',
+            mode: 'cors', 
+            body: JSON.stringify({ "movieId": movieId })       
+        })
+        const data = await response.json();
+        console.log(JSON.stringify({ "movieId": movieId }))
+        if (data.status == 200) {
+            props.notify("Movie Removed Successfully!")
+            navigate("/watchlist");
+        } else {
+            props.notify("Something went wrong... please try again!")
+            navigate("/watchlist");
+        }
+    }
+
     return (
         <div className="movie-info">
-            {/* TODO: FIX THIS */}
             <div className="trash-icon">
-                <a className="home-link" href="">
+                <button onClick={(event) => {handleSubmit(event, props.movie.id)}}>
                     <i className="fa fa-trash custome-trash-icon"></i>
-                </a>
+                </button>
             </div>
             <div className="id-value-div">
                 <p className="persian-text custome-text-white bold-text space-property">
@@ -81,17 +102,15 @@ function CapsuleMovieInfo(props) {
 }
 
 
-class WatchlistCapsule extends React.Component {
-    render() {
-        return (
-            <div className="capsule">
-                <CapsuleImage movie={this.props.movie} />
-                <CapsuleMovieName movie={this.props.movie} />
-                <CapsuleMovieRatings movie={this.props.movie} />
-                <CapsuleMovieInfo movie={this.props.movie} />
-            </div>
-        );
-    }
+function WatchlistCapsule({movie, notify}) {
+    return (
+        <div className="capsule">
+            <CapsuleImage movie={movie} />
+            <CapsuleMovieName movie={movie} />
+            <CapsuleMovieRatings movie={movie} />
+            <CapsuleMovieInfo movie={movie} notify={notify} />
+        </div>
+    );
 }
 
 export default WatchlistCapsule;
