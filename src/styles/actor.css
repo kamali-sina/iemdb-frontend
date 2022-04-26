@@ -37,7 +37,7 @@ img {
   height: auto;
 }
 
-.actor_information {
+.actor_page-actor_information {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -52,7 +52,7 @@ img {
   align-self: auto;
 }
 
-.information {
+.actor_page-information {
   flex-basis: 73%;
 }
 
@@ -64,52 +64,65 @@ img {
   border-radius: var(--capsule-rounding-radius);
 }
 
-.recommended_movies {
+.actor_movies_container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   background-color: var(--capsule-background-color);
   margin: 1%;
   padding-left: 2%;
   padding-right: 2%;
   height: 25vw;
   width: 68vw;
-  overflow: auto;
-  white-space: nowrap;
 }
 
-.recommended_movie img {
+.actor_movies {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  overflow: auto;
+  white-space: nowrap;
+  width: 68vw;
+}
+
+.actor_movie {
+  position: relative;
+  text-align: center;
+  margin-right: 2vw;
+  margin-left: 2vw;
+}
+
+.actor_movie img {
+  display: block;
   height: 20vw;
   width: auto;
 }
 
-.recommended_movie {
-  position: relative;
-  text-align: center;
-  padding-bottom: 0%;
-  margin-right: 10vw;
-  margin-left: 2vw;
-}
-
-.recommended_movie:hover img {
-  opacity: 0.5;
-}
-
-.recommended_movie:hover .text {
-  opacity: 0.8;
-}
-
-.recommended_movie:hover {
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  border-radius: 10px;
   background-color: var(--navbar-bg-color);
 }
 
-.text {
-  opacity: 0;
+.actor_movie:hover .overlay {
+  opacity: 0.8;
+}
+
+.actor-movie-text {
+  color: white;
   position: absolute;
-  top: 3%;
+  top: 10%;
   left: 50%;
-  transform: translate(-50%, 0%);
+  transform: translate(-50%, -50%);
 }
 
 .page-container {

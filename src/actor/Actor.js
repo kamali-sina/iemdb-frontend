@@ -19,14 +19,13 @@ function CapsuleImage(props) {
 
 function ActorMovieCapsule(props) {
   return (
-    <a
-      className="recommended_movie rounded custome-text-white"
-      href={"/movie/" + props.movie.id}
-    >
+    <a className="actor_movie rounded" href={"/movie/" + props.movie.id}>
       <img alt={props.movie.name} src={props.movie.image} />
-      <div className="text">
-        {props.movie.name} <br />
-        {props.movie.imdbRate}
+      <div className="overlay">
+        <div className="actor-movie-text">
+          {props.movie.name} <br />
+          {props.movie.imdbRate}
+        </div>
       </div>
     </a>
   );
@@ -34,7 +33,7 @@ function ActorMovieCapsule(props) {
 
 function ActorInformationCapsule(props) {
   return (
-    <div className="information">
+    <div className="actor_page-information">
       <h1 className="custome-text-white">مشخصات بازیگر</h1>
       <div className="information_text custome-text-white">
         <p>نام: {props.actor.name}</p>
@@ -42,9 +41,9 @@ function ActorInformationCapsule(props) {
         <p>ملیت: {props.actor.nationality}</p>
         <p>تعداد فیلم‌ها: {props.movies.length}</p>
       </div>
-      <div className="actor_movies">
+      <div className="actor_movies_container rounded">
         <h2 className="custome-text-white">فیلم‌ها</h2>
-        <div className="recommended_movies rounded">
+        <div className="actor_movies rounded">
           {props.movies.map(function (object, i) {
             return <ActorMovieCapsule key={object.id} movie={object} />;
           })}
@@ -75,12 +74,10 @@ class ActorInformation extends React.Component {
 
   render() {
     return (
-      <div className="information">
-        <ActorInformationCapsule
-          actor={this.props.actor}
-          movies={this.state.items}
-        />
-      </div>
+      <ActorInformationCapsule
+        actor={this.props.actor}
+        movies={this.state.items}
+      />
     );
   }
 }
@@ -88,7 +85,7 @@ class ActorInformation extends React.Component {
 class ActorCapsule extends React.Component {
   render() {
     return (
-      <div className="actor_information">
+      <div className="actor_page-actor_information">
         <CapsuleImage actor={this.props.actor} />
         <ActorInformation actor={this.props.actor} id={this.props.id} />
       </div>
