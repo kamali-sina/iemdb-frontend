@@ -230,6 +230,7 @@ a:active {
   object-fit: cover;
   border-radius: 50%;
   object-position: center 0%;
+  display: block;
 }
 
 .comments {
@@ -276,6 +277,12 @@ a:active {
   font-size: 1vw;
 }
 
+.movie_text {
+  direction: rtl;
+  color: black;
+  font-size: 1vw;
+}
+
 .textarea {
   font-size: 1vw;
 }
@@ -302,6 +309,12 @@ a:active {
   top: 50%;
   transform: translate(-50%, -50%);
   font-size: 1vw;
+}
+
+.add-to-watchlist-button {
+  background-color: var(--navbar-bg-color);
+  text-align: center;
+  opacity: 0.8;
 }
 
 .button {
