@@ -311,6 +311,12 @@ a:active {
   font-size: 1vw;
 }
 
+.add-to-watchlist-button {
+  background-color: var(--navbar-bg-color);
+  text-align: center;
+  opacity: 0.8;
+}
+
 .button {
   background-color: #43c45f; /* Green */
   border: none;
