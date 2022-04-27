@@ -3,11 +3,11 @@ import React from 'react';
 import MoviesGrid from './MoviesGrid';
 import MoviesNavbar from './MoviesNavbar';
 
-function MoviesPage() {
+function MoviesPage({notify}) {
     return (
         <div className="page-container">
             {/* TODO: Movies Navbar goes here */}
-            <MoviesNavbar />
+            <MoviesNavbar notify={notify} />
             
             <div className="main-column-div">
                 <div></div>

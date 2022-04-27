@@ -26,7 +26,7 @@ function SearchBar() {
     );
 }
 
-function MoviesNavbar() {
+function MoviesNavbar({notify}) {
     return (
         <header id="navbar">
             <nav class="navbar">
@@ -34,7 +34,7 @@ function MoviesNavbar() {
 
                 <SearchBar />
 
-                <NavbarUserIcon />
+                <NavbarUserIcon notify={notify} />
             </nav>
         </header>
     );
