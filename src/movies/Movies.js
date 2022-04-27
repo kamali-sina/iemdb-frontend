@@ -1,34 +1,18 @@
 import '../styles/movies.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import MoviesGrid from './MoviesGrid';
 import MoviesNavbar from './MoviesNavbar';
 
-function MoviesPage({notify}) {
+function MoviesPage({notify, movies}) {
+    const [items, setItems] = useState([])
+    const [sortby, setSortby] = useState("date")
+    const [searchValue, setSearchValue] = useState('')
+
     return (
         <div className="page-container">
-            {/* TODO: Movies Navbar goes here */}
-            <MoviesNavbar notify={notify} />
+            <MoviesNavbar notify={notify} setItems={setItems} sortby={sortby} searchValue={searchValue} setSearchValue={setSearchValue} />
             
-            <div className="main-column-div">
-                <div></div>
-
-                <MoviesGrid />
-
-                {/* TODO: fix me please */}
-                <div className="sorting-culomn">
-                    <p className="sort-by-text">رتبه بندی بر اساس:</p>
-                    <div className="sort-by-div">
-                        <a href="" className="home-link">
-                            <p className="sort-by-items">تاریخ</p>
-                        </a>
-
-                        <a href="" className="home-link">
-                            <p className="sort-by-items">امتیاز Imdb</p>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
+            <MoviesGrid notify={notify} setItems={setItems} setSortby={setSortby} items={items} searchValue={searchValue} />
         </div>
     );
 }
