@@ -3,7 +3,7 @@ import '../styles/moviesCapsule.css'
 
 function SingleMovieCapsule({movie}) { 
     return (
-      <a className="movies-capsule-movie rounded custome-text-white" href="">
+      <a className="movies-capsule-movie rounded custome-text-white" href={"/movie/" + movie.id}>
         <img alt={movie.name} src={movie.image} />
         <div className="text">
           {movie.name} <br />

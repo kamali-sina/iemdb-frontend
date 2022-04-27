@@ -2,11 +2,11 @@ import React from "react";
 
 function NavbarLogo() {
     return (
-        <a href="" class="home-link">
-            <div class="logo-image">
+        <a href="/" className="home-link">
+            <div className="logo-image">
                 <img
                     src={process.env.PUBLIC_URL + '/logo.png'}
-                    class="img-responsive img-rounded"
+                    className="img-responsive img-rounded"
                     alt="logo"
                 />
             </div>
