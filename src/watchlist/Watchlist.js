@@ -1,5 +1,6 @@
 import '../styles/watchlist.css';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom"; 
 import Navbar from '../components/Navbar'
 import WatchlistCapsule from './WatchlistCapsule';
 import MoviesCapsule from '../components/MoviesCapsule';
@@ -9,7 +10,7 @@ function Watchlist({notify}) {
     const [dataIsLoaded, setDataIsLoaded] = useState(false)
 
     function doFetch() {
-        fetch('http://127.0.0.1:8080/movies/')
+        fetch('http://127.0.0.1:8080/users/watchlist')
             .then(resp => resp.json())
             .then(data => {
                 setItems(data.data);
@@ -35,7 +36,7 @@ function RecommendedMovies() {
     const [dataIsLoaded, setDataIsLoaded] = useState(false)
 
     function doFetch() {
-        fetch('http://127.0.0.1:8080/movies/')
+        fetch('http://127.0.0.1:8080/movies/recommendedMovies')
             .then(resp => resp.json())
             .then(data => {
                 setItems(data.data);
@@ -51,15 +52,35 @@ function RecommendedMovies() {
 }
 
 function WatchlistPage({notify}) {
-    return (
-        <div className="container">
-            <Navbar />
-            <Watchlist notify={notify} />
-            <div className="centered-container">
-                <RecommendedMovies />
+    const navigate = useNavigate();
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(null)
+
+    useEffect(() => {
+        const doFetch = async () => {
+            const response = await fetch('http://127.0.0.1:8080/users/loggedInUser');
+            const data = await response.json();
+            console.log(data);
+            if (data.data === null) {
+                setIsUserLoggedIn(false);
+                navigate("/login");
+            } else {
+                setIsUserLoggedIn(true);
+            }
+        }
+        doFetch();
+    }, [isUserLoggedIn])
+
+    if (isUserLoggedIn === true) {
+        return (
+            <div className="container">
+                <Navbar notify={notify} />
+                <Watchlist notify={notify} />
+                <div className="centered-container">
+                    <RecommendedMovies />
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default WatchlistPage;
