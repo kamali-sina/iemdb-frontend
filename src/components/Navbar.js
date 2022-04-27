@@ -2,13 +2,13 @@ import React from 'react';
 import NavbarLogo from './NavbarLogo';
 import NavbarUserIcon from './NavbarUserIcon';
 
-function Navbar() {
+function Navbar({notify}) {
     return (
         <header id="navbar">
             <nav className="navbar">
                 <NavbarLogo />
 
-                <NavbarUserIcon />                
+                <NavbarUserIcon notify={notify} />                
             </nav>
         </header>
     );
