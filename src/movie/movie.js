@@ -41,7 +41,7 @@ function MovieCapsule({ id, movie, notify }) {
   return (
     <div className="movie_page">
       <Wallpaper movie={movie} />
-      <Information movie={movie} />
+      <Information movie={movie} notify={notify} />
       <ActorsCapsule id={id} movie={movie} />
       <CommentsCapsule id={id} movie={movie} notify={notify} />
     </div>
