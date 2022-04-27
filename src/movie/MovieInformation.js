@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Rating from "./Rating";
 
 const AddToWatchlist = ({ movieId, notify }) => {
   const navigate = useNavigate();
@@ -50,21 +51,7 @@ function Information({ movie, notify }) {
         <hr />
         <div class="movie_summary">{movie.summary}</div>
       </div>
-      <div class="rating">
-        <div class="imdb_rating">{movie.imdbRate}</div>
-        <div class="stars">
-          <div class="star_checked">
-            <i class="fa fa-star checked"></i>
-          </div>
-        </div>
-        <div class="user_rating">
-          <div class="user_score">{movie.averageRatingRate}</div>
-          <div class="rating_info">
-            <div class="user_rating_text">امتیاز کاربران</div>
-            <div class="user_rating_count">({movie.ratingCount} رای)</div>
-          </div>
-        </div>
-      </div>
+      <Rating movie={movie} notify={notify} />
     </div>
   );
 }
