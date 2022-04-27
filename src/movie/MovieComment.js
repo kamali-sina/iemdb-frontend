@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Vote = ({ comment, notify }) => {
+  const navigate = useNavigate();
   async function voteComment(event) {
     const response = await fetch(
       "http://127.0.0.1:8080/comments/" + comment.id + "/vote",
@@ -19,7 +21,10 @@ const Vote = ({ comment, notify }) => {
     if (data.status == 200) {
       notify("Voted Successul!");
     } else {
-      notify("Something went wrong!");
+      notify(data.data);
+      if (data.status == 401) {
+        navigate("/login");
+      }
     }
   }
 
