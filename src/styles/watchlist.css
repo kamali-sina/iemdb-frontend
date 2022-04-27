@@ -73,17 +73,6 @@ a:active {
   margin-right: 5%;
 }
 
-.recommended_movies {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #4e4e50;
-  border-radius: 10px;
-  margin: 1%;
-  padding-left: 2%;
-  padding-right: 2%;
-}
-
 .recommended-watchlist-movies {
   width: 50%;
   display: flex;
@@ -113,26 +102,6 @@ a:active {
 }
 
 .recommended-watchlist-movie:hover {
-  background-color: #b12025;
-}
-
-.recommended_movie {
-  position: relative;
-  text-align: center;
-  margin-top: 1%;
-  border-radius: 10px;
-  padding-bottom: 0%;
-}
-
-.recommended_movie:hover img {
-  opacity: 0.1;
-}
-
-.recommended_movie:hover .text {
-  opacity: 1;
-}
-
-.recommended_movie:hover {
   background-color: #b12025;
 }
 
@@ -259,16 +228,4 @@ a:active {
 
 .custome-title-white {
   color: white;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--navbar-bg-color);
-  left: 0;
-  right: 0;
-  top: 0;
-  height: var(--navbar-height);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
