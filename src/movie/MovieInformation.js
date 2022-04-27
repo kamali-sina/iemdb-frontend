@@ -22,8 +22,11 @@ const AddToWatchlist = ({ movieId, notify }) => {
   }
 
   return (
-    <button onClick={addToWatchlist}>
-      <div className="add-to-watchlist-button rounded">افزودن به لیست</div>;
+    <button
+      className="add-to-watchlist-button rounded"
+      onClick={addToWatchlist}
+    >
+      افزودن به لیست
     </button>
   );
 };
