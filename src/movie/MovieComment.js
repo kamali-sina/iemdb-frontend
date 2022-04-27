@@ -18,13 +18,9 @@ const Vote = ({ comment, notify }) => {
     );
     const data = await response.json();
     console.log("A vote was cast: " + data.status + ": " + data.data);
-    if (data.status == 200) {
-      notify("Voted Successul!");
-    } else {
-      notify(data.data);
-      if (data.status == 401) {
-        navigate("/login");
-      }
+    notify(data.data);
+    if (data.status == 401) {
+      navigate("/login");
     }
   }
 
