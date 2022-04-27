@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 function CapsuleImage(props) {
     return (
         <div>
-            <img
-                className="img-rounded"
-                src={props.movie.image}
-                alt={props.movie.name}
-            />
+            <a href={"/movie/" + props.movie.id}>
+                <img
+                    className="img-rounded"
+                    src={props.movie.image}
+                    alt={props.movie.name}
+                />
+            </a>
         </div>
     );
 }
