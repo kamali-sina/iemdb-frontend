@@ -20,7 +20,7 @@ const routs = (
   <BrowserRouter>
     <ToastContainer />
     <Routes>
-      <Route exact path="/" element={<App />} />
+      <Route exact path="/" element={<MoviesPage notify={notify} />} />
       <Route exact path="/actor/:id" element={<ActorPage notify={notify} />} />
       <Route exact path="/movie/:id" element={<MoviePage notify={notify} />} />
       <Route
@@ -29,7 +29,6 @@ const routs = (
         element={<WatchlistPage notify={notify} />}
       />
       <Route exact path="/login" element={<LoginPage notify={notify} />} />
-      <Route exact path="/movies" element={<MoviesPage notify={notify} />} />
       <Route exact path="/signup" element={<SignupPage notify={notify} />} />
       {/* <Route path="*" element={<NotFound/>}/> */}
     </Routes>
