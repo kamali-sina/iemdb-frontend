@@ -2,46 +2,11 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/movie.css";
 
-import Comment from "./MovieComment";
 import Actor from "./MovieActor";
 import Information from "./MovieInformation";
 import Wallpaper from "./MovieWallpaper";
 import { useParams } from "react-router-dom";
-
-function CommentsCapsule({ id, notify }) {
-  const [items, setItems] = useState([]);
-  const [dataIsLoaded, setDataIsLoaded] = useState(false);
-
-  function doFetch() {
-    fetch("http://127.0.0.1:8080/movies/" + id + "/comments")
-      .then((resp) => resp.json())
-      .then((data) => {
-        setItems(data.data);
-        setDataIsLoaded(true);
-      });
-  }
-
-  useEffect(() => {
-    doFetch();
-  }, [items]);
-
-  return (
-    <div className="comments">
-      <h2>دیدگاه‌ها</h2>
-      <form className="comment">
-        <div className="name">دیدگاه خود را اضافه کنید:</div>
-        <hr />
-        <textarea className="textarea"></textarea>
-        <a className="button" href="">
-          ثبت
-        </a>
-      </form>
-      {items.map(function (object, i) {
-        return <Comment key={object.id} comment={object} notify={notify} />;
-      })}
-    </div>
-  );
-}
+import CommentsCapsule from "./MovieCommentCapsule";
 
 function ActorsCapsule({ id, notify }) {
   const [items, setItems] = useState([]);
