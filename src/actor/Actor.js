@@ -62,7 +62,7 @@ function ActorPage({ notify }) {
   const { id } = useParams();
   return (
     <div>
-      <Navbar />
+      <Navbar notify={notify} />
       <Actor id={id} notify={notify} />
     </div>
   );
