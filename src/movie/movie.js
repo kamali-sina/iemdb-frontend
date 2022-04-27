@@ -112,7 +112,7 @@ function MoviePage({ notify }) {
 
   return (
     <div>
-      <Navbar />
+      <Navbar notify={notify} />
       <Movie id={id} notify={notify} />
     </div>
   );
