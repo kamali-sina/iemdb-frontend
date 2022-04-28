@@ -29,7 +29,6 @@ function SearchBar({notify, setItems, sortby, searchValue, setSearchValue, setIs
             notify("An unexpected error happened: " + data.data)
         }
     }
-  }
 
     async function handleSearch2(filter) {
         const query = 'searchValue=' + searchValue + "&filter=" + filter + '&sortedBy=' + sortby
