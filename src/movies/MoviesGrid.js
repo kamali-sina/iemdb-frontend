@@ -10,7 +10,7 @@ function MoviesGridItem({movie}) {
                 className="movie-card-img"
                 alt={movie.name}
                 />
-                <div className="text custome-title-white">
+                <div className="text custome-title-white-movies-grid">
                     {movie.name} <br />
                     {movie.imdbRate}
                 </div>
@@ -20,22 +20,12 @@ function MoviesGridItem({movie}) {
 }
 
 function MoviesGrid({notify, items, setSortby, setItems}) {
-    function doFetch() {
-        fetch('http://127.0.0.1:8080/movies/')
-            .then(resp => resp.json())
-            .then(data => {
-                setItems(data.data);
-            });
-    }
-
     useEffect(() => {
-        if (!items) {
-            doFetch()
-        }
+
     }, [items])
 
-    function handleSort(event, filter) {
-        setSortby(filter)
+    function handleSort(event, sortby) {
+        setSortby(sortby)
     }
 
     return (
@@ -54,11 +44,11 @@ function MoviesGrid({notify, items, setSortby, setItems}) {
             <div className="sorting-culomn">
                 <p className="sort-by-text">رتبه بندی بر اساس:</p>
                 <div className="sort-by-div">
-                    <button onClick={(event) => { handleSort(event, "date") }} >
+                    <button onClick={(event) => { handleSort(event, "sortByDate") }} >
                         <p className="sort-by-items">تاریخ</p>
                     </button>
 
-                    <button onClick={(event) => { handleSort(event, "imdbRate") }} >
+                    <button onClick={(event) => { handleSort(event, "sortByImdb") }} >
                         <p className="sort-by-items">امتیاز IMDB</p>
                     </button>
                 </div>

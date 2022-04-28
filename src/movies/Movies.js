@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 import MoviesGrid from './MoviesGrid';
 import MoviesNavbar from './MoviesNavbar';
 
-function MoviesPage({notify, movies}) {
+function MoviesPage({notify}) {
     const [items, setItems] = useState([])
-    const [sortby, setSortby] = useState("date")
+    const [sortby, setSortby] = useState("sortByImdb")
     const [searchValue, setSearchValue] = useState('')
 
     return (
