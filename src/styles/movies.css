@@ -210,6 +210,7 @@ a:active {
   left: auto;
   text-align: right;
   margin-top: var(--navbar-height);
+  color: black;
 }
 
 .dropdown-content-user a {
@@ -226,6 +227,7 @@ a:active {
 
 .dropdown-content-user a:hover {
   background-color: #ddd;
+  color: black;
 }
 
 .dropdown-user:hover .dropdown-content-user {
@@ -298,6 +300,7 @@ a:active {
 
 .movie-card:hover .text {
   opacity: 1;
+  color: white;
 }
 
 .movie-card:hover {
@@ -337,4 +340,12 @@ a:active {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+}
+
+.movies-button {
+  background-color: var(--navbar-bg-color);
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-family: vazirmatn, sans-serif;
 }

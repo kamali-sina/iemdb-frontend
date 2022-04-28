@@ -1,96 +1,152 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom"; 
-import NavbarUserIcon from '../components/NavbarUserIcon';
-import NavbarLogo from '../components/NavbarLogo';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import NavbarUserIcon from "../components/NavbarUserIcon";
+import NavbarLogo from "../components/NavbarLogo";
 
+function SearchBar({ notify, setItems, sortby, searchValue, setSearchValue }) {
+  const navigate = useNavigate();
 
-function SearchBar({notify, setItems, sortby, searchValue, setSearchValue}) {
-    const navigate = useNavigate();
+  function handleSearchValueChange(event) {
+    setSearchValue(event.target.value);
+  }
 
-    function handleSearchValueChange (event) {    
-        setSearchValue(event.target.value);
-    }
-
-    async function handleSearch(event, filter) {
-        event.preventDefault();
-        const query = 'searchValue=' + searchValue + "&filter=" + filter + '&sortedBy=' + sortby
-        console.log("search query: " + query)
-        const response = await fetch('http://127.0.0.1:8080/movies/search?' + query , { 
-            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-            method: 'GET', 
-            mode: 'cors'
-        });
-        const data = await response.json();
-        if (data.status == 200) {
-            setItems(data.data)
-        } else {
-            notify("An unexpected error happened: " + data.data)
-        }
-    }
-
-    async function handleSearch2(filter) {
-        const query = 'searchValue=' + searchValue + "&filter=" + filter + '&sortedBy=' + sortby
-        console.log("search query: " + query)
-        const response = await fetch('http://127.0.0.1:8080/movies/search?' + query , { 
-            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-            method: 'GET', 
-            mode: 'cors'
-        });
-        const data = await response.json();
-        if (data.status == 200) {
-            setItems(data.data)
-        } else {
-            notify("An unexpected error happened: " + data.data)
-        }
-    }
-    
-    useEffect(() => {
-        handleSearch2("name")
-    }, [sortby])
-
-    return (
-        <form onSubmit={() => { return handleSearch2("name") }} className="search-bar">
-            <div className="dropdown">
-                <button className="dropbtn">
-                    جستجو بر اساس
-                    <i className="fa fa-sort-desc custome-drop-icon"></i>
-                </button>
-
-                <div className="dropdown-content">
-                    <button onClick={(event) => { handleSearch(event, "name") }} >
-                        <p className="sort-by-items">نام</p>
-                    </button>
-
-                    <button onClick={(event) => { handleSearch(event, "genre") }} >
-                        <p className="sort-by-items">ژانر</p>
-                    </button>
-                    
-                    <button onClick={(event) => { handleSearch(event, "releaseDate") }} >
-                        <p className="sort-by-items">تاریخ تولید</p>
-                    </button>
-                </div>
-            </div>
-            <input
-                type="text"
-                className="search-text-input custome-search-input"
-                value={searchValue} onChange={handleSearchValueChange}
-            />
-        </form>
+  async function handleSearch(event, filter) {
+    event.preventDefault();
+    const query =
+      "searchValue=" +
+      searchValue +
+      "&filter=" +
+      filter +
+      "&sortedBy=" +
+      sortby;
+    console.log("search query: " + query);
+    const response = await fetch(
+      "http://127.0.0.1:8080/movies/search?" + query,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        method: "GET",
+        mode: "cors",
+      }
     );
+    const data = await response.json();
+    if (data.status == 200) {
+      setItems(data.data);
+    } else {
+      notify("An unexpected error happened: " + data.data);
+    }
+  }
+
+  async function handleSearch2(filter) {
+    const query =
+      "searchValue=" +
+      searchValue +
+      "&filter=" +
+      filter +
+      "&sortedBy=" +
+      sortby;
+    console.log("search query: " + query);
+    const response = await fetch(
+      "http://127.0.0.1:8080/movies/search?" + query,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        method: "GET",
+        mode: "cors",
+      }
+    );
+    const data = await response.json();
+    if (data.status == 200) {
+      setItems(data.data);
+    } else {
+      notify("An unexpected error happened: " + data.data);
+    }
+  }
+
+  useEffect(() => {
+    handleSearch2("name");
+  }, [sortby]);
+
+  return (
+    <form
+      onSubmit={() => {
+        return handleSearch2("name");
+      }}
+      className="search-bar"
+    >
+      <div className="dropdown">
+        <button className="dropbtn">
+          جستجو بر اساس
+          <i className="fa fa-sort-desc custome-drop-icon"></i>
+        </button>
+
+        <div className="dropdown-content">
+          <button
+            className="navbar-button"
+            onClick={(event) => {
+              handleSearch(event, "name");
+            }}
+          >
+            <p className="sort-by-items">نام</p>
+          </button>
+
+          <button
+            className="navbar-button"
+            onClick={(event) => {
+              handleSearch(event, "genre");
+            }}
+          >
+            <p className="sort-by-items">ژانر</p>
+          </button>
+
+          <button
+            className="navbar-button"
+            onClick={(event) => {
+              handleSearch(event, "releaseDate");
+            }}
+          >
+            <p className="sort-by-items">تاریخ تولید</p>
+          </button>
+        </div>
+      </div>
+      <input
+        type="text"
+        className="search-text-input custome-search-input"
+        value={searchValue}
+        onChange={handleSearchValueChange}
+      />
+    </form>
+  );
 }
 
-function MoviesNavbar({notify, setItems, sortby, searchValue, setSearchValue}) {
-    return (
-        <header id="navbar">
-            <nav className="navbar">
-                <NavbarLogo />
+function MoviesNavbar({
+  notify,
+  setItems,
+  sortby,
+  searchValue,
+  setSearchValue,
+}) {
+  return (
+    <header id="navbar">
+      <nav className="navbar">
+        <NavbarLogo />
 
-                <SearchBar notify={notify} setItems={setItems} sortby={sortby} searchValue={searchValue} setSearchValue={setSearchValue} />
+        <SearchBar
+          notify={notify}
+          setItems={setItems}
+          sortby={sortby}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
 
-                <NavbarUserIcon notify={notify} />
-            </nav>
-        </header>
-    );
+        <NavbarUserIcon notify={notify} />
+      </nav>
+    </header>
+  );
 }
 
 export default MoviesNavbar;
