@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom"; 
-import NavbarUserIcon from '../components/NavbarUserIcon';
-import NavbarLogo from '../components/NavbarLogo';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import NavbarUserIcon from "../components/NavbarUserIcon";
+import NavbarLogo from "../components/NavbarLogo";
 
 
 function SearchBar({notify, setItems, sortby, searchValue, setSearchValue, setIsLoading}) {
     const navigate = useNavigate();
 
-    function handleSearchValueChange (event) {    
+    function handleSearchValueChange(event) {
         setSearchValue(event.target.value);
     }
 
@@ -29,6 +29,7 @@ function SearchBar({notify, setItems, sortby, searchValue, setSearchValue, setIs
             notify("An unexpected error happened: " + data.data)
         }
     }
+  }
 
     async function handleSearch2(filter) {
         const query = 'searchValue=' + searchValue + "&filter=" + filter + '&sortedBy=' + sortby
@@ -52,35 +53,56 @@ function SearchBar({notify, setItems, sortby, searchValue, setSearchValue, setIs
         handleSearch2("name")
     }, [sortby])
 
-    return (
-        <form onSubmit={() => { return handleSearch2("name") }} className="search-bar">
-            <div className="dropdown">
-                <button className="dropbtn">
-                    جستجو بر اساس
-                    <i className="fa fa-sort-desc custome-drop-icon"></i>
-                </button>
+  return (
+    <form
+      onSubmit={() => {
+        return handleSearch2("name");
+      }}
+      className="search-bar"
+    >
+      <div className="dropdown">
+        <button className="dropbtn">
+          جستجو بر اساس
+          <i className="fa fa-sort-desc custome-drop-icon"></i>
+        </button>
 
-                <div className="dropdown-content">
-                    <button onClick={(event) => { handleSearch(event, "name") }} >
-                        <p className="sort-by-items">نام</p>
-                    </button>
+        <div className="dropdown-content">
+          <button
+            className="navbar-button"
+            onClick={(event) => {
+              handleSearch(event, "name");
+            }}
+          >
+            <p className="sort-by-items">نام</p>
+          </button>
 
-                    <button onClick={(event) => { handleSearch(event, "genre") }} >
-                        <p className="sort-by-items">ژانر</p>
-                    </button>
-                    
-                    <button onClick={(event) => { handleSearch(event, "releaseDate") }} >
-                        <p className="sort-by-items">تاریخ تولید</p>
-                    </button>
-                </div>
-            </div>
-            <input
-                type="text"
-                className="search-text-input custome-search-input"
-                value={searchValue} onChange={handleSearchValueChange}
-            />
-        </form>
-    );
+          <button
+            className="navbar-button"
+            onClick={(event) => {
+              handleSearch(event, "genre");
+            }}
+          >
+            <p className="sort-by-items">ژانر</p>
+          </button>
+
+          <button
+            className="navbar-button"
+            onClick={(event) => {
+              handleSearch(event, "releaseDate");
+            }}
+          >
+            <p className="sort-by-items">تاریخ تولید</p>
+          </button>
+        </div>
+      </div>
+      <input
+        type="text"
+        className="search-text-input custome-search-input"
+        value={searchValue}
+        onChange={handleSearchValueChange}
+      />
+    </form>
+  );
 }
 
 function MoviesNavbar({notify, setItems, sortby, searchValue, setSearchValue, setIsLoading}) {
@@ -94,7 +116,7 @@ function MoviesNavbar({notify, setItems, sortby, searchValue, setSearchValue, se
                 <NavbarUserIcon notify={notify} />
             </nav>
         </header>
-    );
+  );
 }
 
 export default MoviesNavbar;
