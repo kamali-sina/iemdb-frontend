@@ -30,7 +30,7 @@ function LoginForm({notify}) {
         console.log('A name was submitted: ' + data.status + ': ' + data.data);
         if (data.status == 200) {
             notify("Login Successul!")
-            navigate("/movies")
+            navigate("/")
         } else {
             notify("Wrong username or password!")
             navigate("/login")
