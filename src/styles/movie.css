@@ -95,7 +95,7 @@ a:active {
   flex-basis: 60%;
 }
 
-.rating {
+.rating-section {
   flex-basis: 20%;
   border-radius: 10px;
   background-color: #b12025;
@@ -132,7 +132,7 @@ a:active {
 
 .user_score {
   font-weight: bold;
-  font-size: 2vw;
+  font-size: 1.8vw;
   margin-right: 1vw;
 }
 
@@ -173,6 +173,8 @@ a:active {
 }
 
 .thumbs-up {
+  background-color: white;
+  border: none;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -181,6 +183,8 @@ a:active {
 }
 
 .thumbs-down {
+  background-color: white;
+  border: none;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -312,13 +316,18 @@ a:active {
 }
 
 .add-to-watchlist-button {
+  font-family: vazirmatn, sans-serif;
   background-color: var(--navbar-bg-color);
+  border: none;
+  width: 100%;
   text-align: center;
-  opacity: 0.8;
   font-size: 1vw;
+  cursor: pointer;
+  color: white;
 }
 
 .button {
+  font-family: vazirmatn, sans-serif;
   background-color: #43c45f; /* Green */
   border: none;
   color: white;
@@ -328,4 +337,52 @@ a:active {
   display: inline-block;
   font-size: 16px;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+.stars:hover .rating {
+  opacity: 1;
+}
+
+.stars:hover .star_checked {
+  opacity: 0;
+}
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  opacity: 0;
+  margin-top: -4.5vw;
+}
+
+.rating > input {
+  display: none;
+}
+
+.rating > label {
+  position: relative;
+  width: 1em;
+  font-size: 3vw;
+  color: orange;
+  cursor: pointer;
+}
+
+.rating > label::before {
+  content: "\2605";
+  position: absolute;
+  opacity: 0;
+}
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before {
+  opacity: 1 !important;
+}
+
+.rating > input:checked ~ label:before {
+  opacity: 1;
+}
+
+.rating:hover > input:checked ~ label:before {
+  opacity: 0.4;
 }
