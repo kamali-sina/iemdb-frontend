@@ -1,6 +1,7 @@
 import React from 'react';
 import NavbarLogo from './NavbarLogo';
 import NavbarUserIcon from './NavbarUserIcon';
+import '../styles/navbar.css';
 
 function Navbar({notify}) {
     return (

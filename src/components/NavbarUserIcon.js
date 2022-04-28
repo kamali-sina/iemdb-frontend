@@ -43,8 +43,8 @@ function NavbarUserIcon({notify}) {
                 </div>
 
                 <div className="dropdown-content-user">
-                    <a href="/login">ثبت نام</a>
-                    <a href="/signup">ورود</a>
+                    <a href="/login" className="drop-down-black-text">ورود</a>
+                    <a href="/signup" className="drop-down-black-text">ثبت نام</a>
                 </div>
             </div>
         );
