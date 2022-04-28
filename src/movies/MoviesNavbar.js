@@ -4,7 +4,7 @@ import NavbarUserIcon from '../components/NavbarUserIcon';
 import NavbarLogo from '../components/NavbarLogo';
 
 
-function SearchBar({notify, setItems, sortby, searchValue, setSearchValue}) {
+function SearchBar({notify, setItems, sortby, searchValue, setSearchValue, setIsLoading}) {
     const navigate = useNavigate();
 
     function handleSearchValueChange (event) {    
@@ -15,12 +15,14 @@ function SearchBar({notify, setItems, sortby, searchValue, setSearchValue}) {
         event.preventDefault();
         const query = 'searchValue=' + searchValue + "&filter=" + filter + '&sortedBy=' + sortby
         console.log("search query: " + query)
+        setIsLoading(true);
         const response = await fetch('http://127.0.0.1:8080/movies/search?' + query , { 
             headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
             method: 'GET', 
             mode: 'cors'
         });
         const data = await response.json();
+        setIsLoading(false);
         if (data.status == 200) {
             setItems(data.data)
         } else {
@@ -31,12 +33,14 @@ function SearchBar({notify, setItems, sortby, searchValue, setSearchValue}) {
     async function handleSearch2(filter) {
         const query = 'searchValue=' + searchValue + "&filter=" + filter + '&sortedBy=' + sortby
         console.log("search query: " + query)
+        setIsLoading(true);
         const response = await fetch('http://127.0.0.1:8080/movies/search?' + query , { 
             headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
             method: 'GET', 
             mode: 'cors'
         });
         const data = await response.json();
+        setIsLoading(false);
         if (data.status == 200) {
             setItems(data.data)
         } else {
@@ -79,13 +83,13 @@ function SearchBar({notify, setItems, sortby, searchValue, setSearchValue}) {
     );
 }
 
-function MoviesNavbar({notify, setItems, sortby, searchValue, setSearchValue}) {
+function MoviesNavbar({notify, setItems, sortby, searchValue, setSearchValue, setIsLoading}) {
     return (
         <header id="navbar">
             <nav className="navbar">
                 <NavbarLogo />
 
-                <SearchBar notify={notify} setItems={setItems} sortby={sortby} searchValue={searchValue} setSearchValue={setSearchValue} />
+                <SearchBar notify={notify} setItems={setItems} sortby={sortby} searchValue={searchValue} setSearchValue={setSearchValue} setIsLoading={setIsLoading} />
 
                 <NavbarUserIcon notify={notify} />
             </nav>
