@@ -6,7 +6,7 @@ import LoadingSpinner from '../components/LoadingSpinner.js'
 
 function MoviesPage({notify}) {
     const [items, setItems] = useState([])
-    const [sortby, setSortby] = useState("sortByImdb")
+    const [sortby, setSortby] = useState("imdbRate")
     const [searchValue, setSearchValue] = useState('')
     const [isLoading, setIsLoading] = useState(false)
 
