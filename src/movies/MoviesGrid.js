@@ -40,7 +40,7 @@ function MoviesGrid({ notify, items, setSortby, setItems }) {
           <button
             className="movies-button"
             onClick={(event) => {
-              handleSort(event, "sortByDate");
+              handleSort(event, "releaseDate");
             }}
           >
             <p className="sort-by-items">تاریخ</p>
@@ -49,7 +49,7 @@ function MoviesGrid({ notify, items, setSortby, setItems }) {
           <button
             className="movies-button"
             onClick={(event) => {
-              handleSort(event, "sortByImdb");
+              handleSort(event, "imdbRate");
             }}
           >
             <p className="sort-by-items">امتیاز IMDB</p>
