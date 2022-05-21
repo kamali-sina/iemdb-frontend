@@ -31,11 +31,10 @@ function CommentsCapsule({ id, notify }) {
     const response = await fetch(
       "http://127.0.0.1:8080/movies/" + id + "/comment",
       {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": localStorage.getItem('token'),
-          Accept: "application/json",
-        },
+        headers: new Headers({'Content-Type': 'application/json',
+                      'Authorization': localStorage.getItem('token'),
+                      'Accept': 'application/json'
+                    }),
         method: "POST",
         mode: "cors",
         body: JSON.stringify({ comment: comment }),

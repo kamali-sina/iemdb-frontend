@@ -6,11 +6,10 @@ const AddToWatchlist = ({ movieId, notify }) => {
   const navigate = useNavigate();
   async function addToWatchlist(event) {
     const response = await fetch("http://127.0.0.1:8080/users/watchlist", {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": localStorage.getItem('token'),
-        Accept: "application/json",
-      },
+      headers: new Headers({'Content-Type': 'application/json',
+                      'Authorization': localStorage.getItem('token'),
+                      'Accept': 'application/json'
+                    }),
       method: "POST",
       mode: "cors",
       body: JSON.stringify({ movieId: movieId }),

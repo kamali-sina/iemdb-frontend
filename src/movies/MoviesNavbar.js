@@ -18,10 +18,10 @@ function SearchBar({notify, setItems, sortby, searchValue, setSearchValue, setIs
         setIsLoading(true);
         console.log("token is: " + localStorage.getItem('token'))
         const response = await fetch('http://127.0.0.1:8080/movies/search?' + query , { 
-            headers: {'Content-Type': 'application/json',
-                      "Authorization": localStorage.getItem('token'),
+            headers: new Headers({'Content-Type': 'application/json',
+                      'Authorization': localStorage.getItem('token'),
                       'Accept': 'application/json'
-                    },
+                    }),
             method: 'GET', 
             mode: 'cors'
         });
@@ -40,10 +40,10 @@ function SearchBar({notify, setItems, sortby, searchValue, setSearchValue, setIs
         setIsLoading(true);
         console.log("token is: " + localStorage.getItem('token'))
         const response = await fetch('http://127.0.0.1:8080/movies/search?' + query , { 
-            headers: {'Content-Type': 'application/json', 
-                      'Accept': 'application/json',
-                      "Authorization": localStorage.getItem('token')
-                    },
+          headers: new Headers({'Content-Type': 'application/json',
+              'Authorization': localStorage.getItem('token'),
+              'Accept': 'application/json'
+            }),
             method: 'GET', 
             mode: 'cors'
         });
