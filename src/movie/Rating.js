@@ -9,6 +9,7 @@ const Rate = ({ movie, notify }) => {
       {
         headers: {
           "Content-Type": "application/json",
+          "Authorization": localStorage.getItem('token'),
           Accept: "application/json",
         },
         method: "POST",

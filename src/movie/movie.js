@@ -7,6 +7,8 @@ import Information from "./MovieInformation";
 import Wallpaper from "./MovieWallpaper";
 import { useParams } from "react-router-dom";
 import CommentsCapsule from "./MovieCommentCapsule";
+import { useNavigate } from "react-router-dom"; 
+import userEvent from "@testing-library/user-event";
 
 function ActorsCapsule({ id, notify }) {
   const [items, setItems] = useState([]);
@@ -74,13 +76,26 @@ function Movie({ id, notify }) {
 
 function MoviePage({ notify }) {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(null)
 
-  return (
-    <div>
-      <Navbar notify={notify} />
-      <Movie id={id} notify={notify} />
-    </div>
-  );
+  useEffect(() => {
+    if (localStorage.getItem('token') !== null) {
+      setIsUserLoggedIn(true)
+    } else {
+      notify("You must be logged in to view this page")
+      navigate('/login')
+    }
+  }, [isUserLoggedIn])
+  
+  if (isUserLoggedIn === true) {
+    return (
+      <div>
+        <Navbar notify={notify} />
+        <Movie id={id} notify={notify} />
+      </div>
+    );
+  }
 }
 
 export default MoviePage;

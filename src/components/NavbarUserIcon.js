@@ -6,36 +6,18 @@ function NavbarUserIcon({ notify }) {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(null);
 
   useEffect(() => {
-    const doFetch = async () => {
-      const response = await fetch("http://127.0.0.1:8080/users/loggedInUser");
-      const data = await response.json();
-      console.log(data);
-      if (data.data === null) {
-        setIsUserLoggedIn(false);
-      } else {
-        setIsUserLoggedIn(true);
-      }
-    };
-    doFetch();
-  }, [isUserLoggedIn]);
+    if (localStorage.getItem('token') !== null) {
+      setIsUserLoggedIn(true)
+    } else {
+      setIsUserLoggedIn(false)
+    }
+  }, [isUserLoggedIn])
 
   async function handleLogout(event) {
-    event.preventDefault();
-    const response = await fetch("http://127.0.0.1:8080/users/logout", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      method: "POST",
-      mode: "cors",
-    });
-    const data = await response.json();
-    if (data.status == 200) {
-      notify("logout Successul!");
-      navigate("/login");
-    } else {
-      notify("An error happened when loggin out!");
-    }
+    localStorage.setItem('token', null)
+    localStorage.setItem('token', null)
+    notify("logout Successul!");
+    navigate("/login");
   }
 
   if (isUserLoggedIn === false) {

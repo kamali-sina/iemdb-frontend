@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import "../styles/actor.css";
 import ActorImage from "./ActorImage";
 import ActorInformation from "./ActorInformation";
+import { useNavigate } from "react-router-dom"; 
 
 function ActorInformationClass({ id, actor, notify }) {
   const [items, setItems] = useState([]);
@@ -60,12 +61,26 @@ function Actor({ id, notify }) {
 
 function ActorPage({ notify }) {
   const { id } = useParams();
-  return (
-    <div>
-      <Navbar notify={notify} />
-      <Actor id={id} notify={notify} />
-    </div>
-  );
+  const navigate = useNavigate();
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(null)
+
+  useEffect(() => {
+    if (localStorage.getItem('token') !== null) {
+      setIsUserLoggedIn(true)
+    } else {
+      notify("You must be logged in to view this page")
+      navigate('/login')
+    }
+  }, [isUserLoggedIn])
+
+  if (isUserLoggedIn === true) {
+    return (
+      <div>
+        <Navbar notify={notify} />
+        <Actor id={id} notify={notify} />
+      </div>
+    );
+  }
 }
 
 export default ActorPage;
