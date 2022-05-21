@@ -18,7 +18,8 @@ function SearchBar({notify, setItems, sortby, searchValue, setSearchValue, setIs
         setIsLoading(true);
         console.log("token is: " + localStorage.getItem('token'))
         const response = await fetch('http://127.0.0.1:8080/movies/search?' + query , { 
-            headers: new Headers({'Content-Type': 'application/json',
+            headers: new Headers(
+                    {'Content-Type': 'application/json',
                       'Authorization': localStorage.getItem('token'),
                       'Accept': 'application/json'
                     }),
@@ -40,7 +41,8 @@ function SearchBar({notify, setItems, sortby, searchValue, setSearchValue, setIs
         setIsLoading(true);
         console.log("token is: " + localStorage.getItem('token'))
         const response = await fetch('http://127.0.0.1:8080/movies/search?' + query , { 
-          headers: new Headers({'Content-Type': 'application/json',
+          headers: new Headers(
+            {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token'),
               'Accept': 'application/json'
             }),

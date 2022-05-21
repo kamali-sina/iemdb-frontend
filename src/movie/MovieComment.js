@@ -7,10 +7,11 @@ const Vote = ({ comment, notify }) => {
     const response = await fetch(
       "http://127.0.0.1:8080/comments/" + comment.id + "/vote",
       {
-        headers: new Headers({'Content-Type': 'application/json',
-                      'Authorization': localStorage.getItem('token'),
-                      'Accept': 'application/json'
-                    }),
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token'),
+            'Accept': 'application/json'
+        }),
         method: "POST",
         mode: "cors",
         body: JSON.stringify({ vote: event.currentTarget.value }),

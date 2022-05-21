@@ -15,7 +15,13 @@ function ActorsCapsule({ id, notify }) {
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
   function doFetch() {
-    fetch("http://127.0.0.1:8080/movies/" + id + "/actors")
+    fetch("http://127.0.0.1:8080/movies/" + id + "/actors", {
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token'),
+            'Accept': 'application/json'
+        }),
+      })
       .then((resp) => resp.json())
       .then((data) => {
         setItems(data.data);
@@ -55,7 +61,13 @@ function Movie({ id, notify }) {
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
   function doFetch() {
-    fetch("http://127.0.0.1:8080/movies/" + id)
+    fetch("http://127.0.0.1:8080/movies/" + id, {
+      headers: new Headers({
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('token'),
+          'Accept': 'application/json'
+      }),
+      })
       .then((resp) => resp.json())
       .then((data) => {
         setItems(data.data);

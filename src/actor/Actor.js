@@ -11,7 +11,13 @@ function ActorInformationClass({ id, actor, notify }) {
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
   function doFetch() {
-    fetch("http://127.0.0.1:8080/movies/actors/" + id)
+    fetch("http://127.0.0.1:8080/movies/actors/" + id, {
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token'),
+            'Accept': 'application/json'
+        }),
+      })
       .then((resp) => resp.json())
       .then((data) => {
         setItems(data.data);
@@ -40,7 +46,13 @@ function Actor({ id, notify }) {
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
   function doFetch() {
-    fetch("http://127.0.0.1:8080/actors/" + id)
+    fetch("http://127.0.0.1:8080/actors/" + id, {
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token'),
+            'Accept': 'application/json'
+        }),
+      })
       .then((resp) => resp.json())
       .then((data) => {
         setItems(data.data);
