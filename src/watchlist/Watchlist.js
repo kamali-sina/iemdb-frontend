@@ -10,7 +10,15 @@ function Watchlist({notify}) {
     const [dataIsLoaded, setDataIsLoaded] = useState(false)
 
     function doFetch() {
-        fetch('http://127.0.0.1:8080/users/watchlist')
+        fetch('http://127.0.0.1:8080/users/watchlist', {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": localStorage.getItem('token'),
+                    Accept: "application/json",
+                },
+                method: "POST",
+                mode: "cors",
+            })
             .then(resp => resp.json())
             .then(data => {
                 setItems(data.data);
@@ -36,7 +44,15 @@ function RecommendedMovies() {
     const [dataIsLoaded, setDataIsLoaded] = useState(false)
 
     function doFetch() {
-        fetch('http://127.0.0.1:8080/movies/recommendedMovies')
+        fetch('http://127.0.0.1:8080/movies/recommendedMovies', {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": localStorage.getItem('token'),
+                    Accept: "application/json",
+                },
+                method: "POST",
+                mode: "cors",
+            })
             .then(resp => resp.json())
             .then(data => {
                 setItems(data.data);
@@ -52,22 +68,18 @@ function RecommendedMovies() {
 }
 
 function WatchlistPage({notify}) {
+    console.log('token:' + localStorage.getItem('token'))
+
     const navigate = useNavigate();
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(null)
 
     useEffect(() => {
-        const doFetch = async () => {
-            const response = await fetch('http://127.0.0.1:8080/users/loggedInUser');
-            const data = await response.json();
-            console.log(data);
-            if (data.data === null) {
-                setIsUserLoggedIn(false);
-                navigate("/login");
-            } else {
-                setIsUserLoggedIn(true);
-            }
+        if (localStorage.getItem('token') !== null) {
+            setIsUserLoggedIn(true)
+        } else {
+            notify("You must be logged in to view this page")
+            navigate('/login')
         }
-        doFetch();
     }, [isUserLoggedIn])
 
     if (isUserLoggedIn === true) {

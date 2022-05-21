@@ -1,5 +1,5 @@
 import '../styles/localbootstrap.scss';
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import IemdbLogo from './IemdbLogo';
 import { useNavigate } from "react-router-dom"; 
 
@@ -121,18 +121,32 @@ function SignupForm({notify}) {
 }
 
 function SignupPage({notify}) {
-    return (
-        <div className='local-bootstrap'>
-            <div className="vh-100">
-                <div className="container py-5 h-100">
-                    <div className="row d-flex align-items-center justify-content-center h-100">
-                        <IemdbLogo />
-                        <SignupForm notify={notify} />
+    const navigate = useNavigate();
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(null)
+
+    useEffect(() => {
+        if (localStorage.getItem('token') === null) {
+            setIsUserLoggedIn(false)
+        } else {
+            notify("You can't view this page when logged in")
+            navigate('/')
+        }
+    }, [isUserLoggedIn])
+
+    if (isUserLoggedIn === false) {
+        return (
+            <div className='local-bootstrap'>
+                <div className="vh-100">
+                    <div className="container py-5 h-100">
+                        <div className="row d-flex align-items-center justify-content-center h-100">
+                            <IemdbLogo />
+                            <SignupForm notify={notify} />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default SignupPage;
