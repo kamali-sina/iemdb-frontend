@@ -10,6 +10,7 @@ import ActorPage from "./actor/Actor";
 import MoviesPage from "./movies/Movies";
 import SignupPage from "./users/SignupPage";
 import MoviePage from "./movie/movie";
+import CallbackPage from "./users/Callback";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -30,6 +31,7 @@ const routs = (
       />
       <Route exact path="/login" element={<LoginPage notify={notify} />} />
       <Route exact path="/signup" element={<SignupPage notify={notify} />} />
+      <Route exact path="/callback" element={<CallbackPage notify={notify} />} />
       {/* <Route path="*" element={<NotFound/>}/> */}
     </Routes>
   </BrowserRouter>

@@ -22,3 +22,7 @@ body {
     height: 1px;
     background: var(--background-color);
 }
+
+.btn-custome-github {
+    background-color: black;
+}

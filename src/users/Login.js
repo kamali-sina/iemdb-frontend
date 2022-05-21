@@ -66,6 +66,13 @@ function LoginForm({notify}) {
                 <button className="btn btn-primary btn-lg btn-block" type="submit">
                     Sign in
                 </button>
+
+                <div>
+                    <a class="btn btn-block btn-info" href="https://github.com/login/oauth/authorize?client_id=919a25257e88693e77ab&scope=user">
+                        <span class="fa fa-github"></span> Sign in with Github
+                    </a>
+                </div>
+                
             </form>
         </div>
     );
