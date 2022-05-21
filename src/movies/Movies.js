@@ -12,10 +12,10 @@ function MoviesPage({notify}) {
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate();
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(null)
-    console.log('token:' + localStorage.getItem('token'))
+    console.log(localStorage.getItem('token'))
 
     useEffect(() => {
-        if (localStorage.getItem('token') !== null) {
+        if (localStorage.getItem('token') !== 'null') {
             setIsUserLoggedIn(true)
         } else {
             notify("You must be logged in to view this page")

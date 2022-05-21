@@ -6,7 +6,7 @@ function NavbarUserIcon({ notify }) {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(null);
 
   useEffect(() => {
-    if (localStorage.getItem('token') !== null) {
+    if (localStorage.getItem('token') !== 'null') {
       setIsUserLoggedIn(true)
     } else {
       setIsUserLoggedIn(false)
@@ -15,7 +15,7 @@ function NavbarUserIcon({ notify }) {
 
   async function handleLogout(event) {
     localStorage.setItem('token', null)
-    localStorage.setItem('token', null)
+    sessionStorage.setItem('token', null)
     notify("logout Successul!");
     navigate("/login");
   }

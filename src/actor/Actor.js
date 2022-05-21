@@ -65,7 +65,7 @@ function ActorPage({ notify }) {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(null)
 
   useEffect(() => {
-    if (localStorage.getItem('token') !== null) {
+    if (localStorage.getItem('token') !== 'null') {
       setIsUserLoggedIn(true)
     } else {
       notify("You must be logged in to view this page")

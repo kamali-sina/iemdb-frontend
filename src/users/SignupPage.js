@@ -125,7 +125,7 @@ function SignupPage({notify}) {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(null)
 
     useEffect(() => {
-        if (localStorage.getItem('token') === null) {
+        if (localStorage.getItem('token') === 'null') {
             setIsUserLoggedIn(false)
         } else {
             notify("You can't view this page when logged in")
