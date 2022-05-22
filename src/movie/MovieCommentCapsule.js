@@ -10,7 +10,13 @@ function CommentsCapsule({ id, notify }) {
   const [comment, setComment] = useState("");
 
   function doFetch() {
-    fetch("http://127.0.0.1:8080/movies/" + id + "/comments")
+    fetch("http://127.0.0.1:8080/movies/" + id + "/comments", {
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token'),
+            'Accept': 'application/json'
+        }),
+      })
       .then((resp) => resp.json())
       .then((data) => {
         setItems(data.data);
