@@ -16,7 +16,7 @@ function Watchlist({notify}) {
                     'Authorization': localStorage.getItem('token'),
                     'Accept': 'application/json'
                 }),
-                method: "POST",
+                method: "GET",
                 mode: "cors",
             })
             .then(resp => resp.json())
@@ -51,7 +51,7 @@ function RecommendedMovies() {
                     'Authorization': localStorage.getItem('token'),
                     'Accept': 'application/json'
                 }),
-                method: "POST",
+                method: "GET",
                 mode: "cors",
             })
             .then(resp => resp.json())
