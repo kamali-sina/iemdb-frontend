@@ -6,9 +6,11 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 function CallbackPage({notify}) {
     const navigate = useNavigate();
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(null)
+    const [doOnce, setDoOnce] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams();
 
     async function doFetch(code) {
+        setDoOnce(true);
         const response = await fetch('http://127.0.0.1:8080/callback/', { 
             headers: {'Content-Type': 'application/json', 
                       'Accept': 'application/json'},
@@ -20,10 +22,13 @@ function CallbackPage({notify}) {
         const data = await response.json();
         console.log('tokes: ' + data.status + ': ' + data.data);
         if (data.status == 200) {
+            notify("login using github successful!!")
+            setDoOnce(false);
             localStorage.setItem('token', data.data)
             navigate("/")
         } else {
             notify("login using github failed!!")
+            setDoOnce(false);
             navigate("/login")
         }
     }
@@ -40,7 +45,9 @@ function CallbackPage({notify}) {
             notify("There was a problem!")
             navigate('/login')
         }
-        doFetch(auth_code)
+        if (!doOnce) {
+            doFetch(auth_code)
+        }
     }, [isUserLoggedIn])
 
     return (
