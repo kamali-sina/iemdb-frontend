@@ -33,6 +33,10 @@ function SignupForm({notify}) {
 
     async function handleSubmit(event) {
         event.preventDefault();
+        if (!email || !password || !username || !name) {
+            notify("Error: fields cannot be empty")
+            return
+        }
         const response = await fetch('http://127.0.0.1:8080/users/signup', { 
             headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
             method: 'POST', 
@@ -115,6 +119,18 @@ function SignupForm({notify}) {
                 <button className="btn btn-primary btn-lg btn-block" type="submit">
                     Sign up
                 </button>
+
+                <div>
+                    <a style={{marginTop : 10}} class="btn btn-block btn-warning" href="https://github.com/login/oauth/authorize?client_id=919a25257e88693e77ab&scope=user">
+                        <span class="fa fa-github"></span> Sign in with Github
+                    </a>
+                </div>
+
+                <div>
+                    <a style={{marginTop : 10}} class="btn btn-block btn-warning" href="/login">
+                        <span class="fa fa-user"></span> Already have an account? login.
+                    </a>
+                </div>
             </form>
         </div>
     );

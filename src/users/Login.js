@@ -19,6 +19,10 @@ function LoginForm({notify}) {
 
     async function handleSubmit(event) {
         event.preventDefault();
+        if (!email || !password) {
+            notify("Error: fields cannot be empty")
+            return
+        }
         const response = await fetch('http://127.0.0.1:8080/users/login', { 
             headers: {'Content-Type': 'application/json', 
                       'Accept': 'application/json'},
@@ -68,8 +72,14 @@ function LoginForm({notify}) {
                 </button>
 
                 <div>
-                    <a class="btn btn-block btn-info" href="https://github.com/login/oauth/authorize?client_id=919a25257e88693e77ab&scope=user">
+                    <a style={{marginTop : 10}} class="btn btn-block btn-warning" href="https://github.com/login/oauth/authorize?client_id=919a25257e88693e77ab&scope=user">
                         <span class="fa fa-github"></span> Sign in with Github
+                    </a>
+                </div>
+
+                <div>
+                    <a style={{marginTop : 10}} class="btn btn-block btn-warning" href="/signup">
+                        <span class="fa fa-user"></span> Don't have an account? signup.
                     </a>
                 </div>
                 
