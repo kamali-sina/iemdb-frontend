@@ -23,7 +23,7 @@ function LoginForm({ notify }) {
             notify("Error: fields cannot be empty")
             return
         }
-        const response = await fetch('http://87.247.185.122:31921/users/login', {
+        const response = await fetch('http://87.247.187.217:31921/users/login', {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'

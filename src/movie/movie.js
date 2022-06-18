@@ -15,7 +15,7 @@ function ActorsCapsule({ id, notify }) {
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
   function doFetch() {
-    fetch("http://87.247.185.122:31921/movies/" + id + "/actors", {
+    fetch("http://87.247.187.217:31921/movies/" + id + "/actors", {
       headers: new Headers({
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token'),
@@ -61,7 +61,7 @@ function Movie({ id, notify }) {
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
   function doFetch() {
-    fetch("http://87.247.185.122:31921/movies/" + id, {
+    fetch("http://87.247.187.217:31921/movies/" + id, {
       headers: new Headers({
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token'),

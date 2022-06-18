@@ -11,7 +11,7 @@ function ActorInformationClass({ id, actor, notify }) {
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
   function doFetch() {
-    fetch("http://87.247.185.122:31921/movies/actors/" + id, {
+    fetch("http://87.247.187.217:31921/movies/actors/" + id, {
       headers: new Headers({
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token'),
@@ -46,7 +46,7 @@ function Actor({ id, notify }) {
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
   function doFetch() {
-    fetch("http://87.247.185.122:31921/actors/" + id, {
+    fetch("http://87.247.187.217:31921/actors/" + id, {
       headers: new Headers({
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token'),

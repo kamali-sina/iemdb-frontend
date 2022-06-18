@@ -37,7 +37,7 @@ function SignupForm({ notify }) {
             notify("Error: fields cannot be empty")
             return
         }
-        const response = await fetch('http://87.247.185.122:31921/users/signup', {
+        const response = await fetch('http://87.247.187.217:31921/users/signup', {
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             method: 'POST',
             mode: 'cors',

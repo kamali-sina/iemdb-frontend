@@ -10,7 +10,7 @@ function CommentsCapsule({ id, notify }) {
   const [comment, setComment] = useState("");
 
   function doFetch() {
-    fetch("http://87.247.185.122:31921/movies/" + id + "/comments", {
+    fetch("http://87.247.187.217:31921/movies/" + id + "/comments", {
       headers: new Headers({
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token'),
@@ -35,7 +35,7 @@ function CommentsCapsule({ id, notify }) {
   async function handleSubmit(event) {
     event.preventDefault();
     const response = await fetch(
-      "http://87.247.185.122:31921/movies/" + id + "/comment",
+      "http://87.247.187.217:31921/movies/" + id + "/comment",
       {
         headers: new Headers({
           'Content-Type': 'application/json',

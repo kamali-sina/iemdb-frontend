@@ -11,7 +11,7 @@ function CallbackPage({ notify }) {
 
     async function doFetch(code) {
         setDoOnce(true);
-        const response = await fetch('http://87.247.185.122:31921/callback/', {
+        const response = await fetch('http://87.247.187.217:31921/callback/', {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'

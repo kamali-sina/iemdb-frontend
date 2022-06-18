@@ -5,7 +5,7 @@ const Vote = ({ comment, notify }) => {
   const navigate = useNavigate();
   async function voteComment(event) {
     const response = await fetch(
-      "http://87.247.185.122:31921/comments/" + comment.id + "/vote",
+      "http://87.247.187.217:31921/comments/" + comment.id + "/vote",
       {
         headers: new Headers({
           'Content-Type': 'application/json',

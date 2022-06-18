@@ -17,7 +17,7 @@ function SearchBar({ notify, setItems, sortby, searchValue, setSearchValue, setI
     console.log("search query: " + query)
     setIsLoading(true);
     console.log("token is: " + localStorage.getItem('token'))
-    const response = await fetch('http://87.247.185.122:31921/movies/search?' + query, {
+    const response = await fetch('http://87.247.187.217:31921/movies/search?' + query, {
       headers: new Headers(
         {
           'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ function SearchBar({ notify, setItems, sortby, searchValue, setSearchValue, setI
     console.log("search query: " + query)
     setIsLoading(true);
     console.log("token is: " + localStorage.getItem('token'))
-    const response = await fetch('http://87.247.185.122:31921/movies/search?' + query, {
+    const response = await fetch('http://87.247.187.217:31921/movies/search?' + query, {
       headers: new Headers(
         {
           'Content-Type': 'application/json',
