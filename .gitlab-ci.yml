@@ -1,0 +1,15 @@
+stages:
+- build
+
+build-push:
+  # Use the official docker image.
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "papasinku" -p "IJ8oPYrHmWZ2qJMkgjBb86430biWimY3JhR+4LEZbfiaDJYdfUDccgGP/TGWJOKa" quay.io
+  script:
+    - docker build -t "quay.io/papasinku/iemdb-front-end" .
+    - docker push quay.io/papasinku/iemdb-front-end
+
