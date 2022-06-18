@@ -4,63 +4,65 @@ import NavbarUserIcon from "../components/NavbarUserIcon";
 import NavbarLogo from "../components/NavbarLogo";
 
 
-function SearchBar({notify, setItems, sortby, searchValue, setSearchValue, setIsLoading}) {
-    const navigate = useNavigate();
+function SearchBar({ notify, setItems, sortby, searchValue, setSearchValue, setIsLoading }) {
+  const navigate = useNavigate();
 
-    function handleSearchValueChange(event) {
-        setSearchValue(event.target.value);
-    }
+  function handleSearchValueChange(event) {
+    setSearchValue(event.target.value);
+  }
 
-    async function handleSearch(event, filter) {
-        event.preventDefault();
-        const query = 'searchValue=' + searchValue + "&filter=" + filter + '&sortedBy=' + sortby
-        console.log("search query: " + query)
-        setIsLoading(true);
-        console.log("token is: " + localStorage.getItem('token'))
-        const response = await fetch('http://127.0.0.1:8080/movies/search?' + query , { 
-            headers: new Headers(
-                    {'Content-Type': 'application/json',
-                      'Authorization': localStorage.getItem('token'),
-                      'Accept': 'application/json'
-                    }),
-            method: 'GET', 
-            mode: 'cors'
-        });
-        const data = await response.json();
-        setIsLoading(false);
-        if (data.status == 200) {
-            setItems(data.data)
-        } else {
-            notify("An unexpected error happened: " + data.data)
-        }
+  async function handleSearch(event, filter) {
+    event.preventDefault();
+    const query = 'searchValue=' + searchValue + "&filter=" + filter + '&sortedBy=' + sortby
+    console.log("search query: " + query)
+    setIsLoading(true);
+    console.log("token is: " + localStorage.getItem('token'))
+    const response = await fetch('http://87.247.185.122:31921/movies/search?' + query, {
+      headers: new Headers(
+        {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('token'),
+          'Accept': 'application/json'
+        }),
+      method: 'GET',
+      mode: 'cors'
+    });
+    const data = await response.json();
+    setIsLoading(false);
+    if (data.status == 200) {
+      setItems(data.data)
+    } else {
+      notify("An unexpected error happened: " + data.data)
     }
+  }
 
-    async function handleSearch2(filter) {
-        const query = 'searchValue=' + searchValue + "&filter=" + filter + '&sortedBy=' + sortby
-        console.log("search query: " + query)
-        setIsLoading(true);
-        console.log("token is: " + localStorage.getItem('token'))
-        const response = await fetch('http://127.0.0.1:8080/movies/search?' + query , { 
-          headers: new Headers(
-            {'Content-Type': 'application/json',
-              'Authorization': localStorage.getItem('token'),
-              'Accept': 'application/json'
-            }),
-            method: 'GET', 
-            mode: 'cors'
-        });
-        const data = await response.json();
-        setIsLoading(false);
-        if (data.status == 200) {
-            setItems(data.data)
-        } else {
-            notify("An unexpected error happened: " + data.data)
-        }
+  async function handleSearch2(filter) {
+    const query = 'searchValue=' + searchValue + "&filter=" + filter + '&sortedBy=' + sortby
+    console.log("search query: " + query)
+    setIsLoading(true);
+    console.log("token is: " + localStorage.getItem('token'))
+    const response = await fetch('http://87.247.185.122:31921/movies/search?' + query, {
+      headers: new Headers(
+        {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('token'),
+          'Accept': 'application/json'
+        }),
+      method: 'GET',
+      mode: 'cors'
+    });
+    const data = await response.json();
+    setIsLoading(false);
+    if (data.status == 200) {
+      setItems(data.data)
+    } else {
+      notify("An unexpected error happened: " + data.data)
     }
-    
-    useEffect(() => {
-        handleSearch2("name")
-    }, [sortby])
+  }
+
+  useEffect(() => {
+    handleSearch2("name")
+  }, [sortby])
 
   return (
     <form
@@ -114,17 +116,17 @@ function SearchBar({notify, setItems, sortby, searchValue, setSearchValue, setIs
   );
 }
 
-function MoviesNavbar({notify, setItems, sortby, searchValue, setSearchValue, setIsLoading}) {
-    return (
-        <header id="navbar">
-            <nav className="navbar">
-                <NavbarLogo />
+function MoviesNavbar({ notify, setItems, sortby, searchValue, setSearchValue, setIsLoading }) {
+  return (
+    <header id="navbar">
+      <nav className="navbar">
+        <NavbarLogo />
 
-                <SearchBar notify={notify} setItems={setItems} sortby={sortby} searchValue={searchValue} setSearchValue={setSearchValue} setIsLoading={setIsLoading} />
+        <SearchBar notify={notify} setItems={setItems} sortby={sortby} searchValue={searchValue} setSearchValue={setSearchValue} setIsLoading={setIsLoading} />
 
-                <NavbarUserIcon notify={notify} />
-            </nav>
-        </header>
+        <NavbarUserIcon notify={notify} />
+      </nav>
+    </header>
   );
 }
 

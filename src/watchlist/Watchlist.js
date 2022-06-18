@@ -1,24 +1,24 @@
 import '../styles/watchlist.css';
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import Navbar from '../components/Navbar'
 import WatchlistCapsule from './WatchlistCapsule';
 import MoviesCapsule from '../components/MoviesCapsule';
 
-function Watchlist({notify}) {
+function Watchlist({ notify }) {
     const [items, setItems] = useState([])
     const [dataIsLoaded, setDataIsLoaded] = useState(false)
 
     function doFetch() {
-        fetch('http://127.0.0.1:8080/users/watchlist', {
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'Authorization': localStorage.getItem('token'),
-                    'Accept': 'application/json'
-                }),
-                method: "GET",
-                mode: "cors",
-            })
+        fetch('http://87.247.185.122:31921/users/watchlist', {
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token'),
+                'Accept': 'application/json'
+            }),
+            method: "GET",
+            mode: "cors",
+        })
             .then(resp => resp.json())
             .then(data => {
                 setItems(data.data);
@@ -32,8 +32,8 @@ function Watchlist({notify}) {
 
     return (
         <div className="centered-container">
-            {items.map(function(object, i){
-                return <WatchlistCapsule key={object.id} movie={object} notify={notify} />; 
+            {items.map(function (object, i) {
+                return <WatchlistCapsule key={object.id} movie={object} notify={notify} />;
             })}
         </div>
     );
@@ -45,15 +45,15 @@ function RecommendedMovies() {
 
     function doFetch() {
         console.log('yoyoyo: ' + localStorage.getItem('token'))
-        fetch('http://127.0.0.1:8080/movies/recommendedMovies', {
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'Authorization': localStorage.getItem('token'),
-                    'Accept': 'application/json'
-                }),
-                method: "GET",
-                mode: "cors",
-            })
+        fetch('http://87.247.185.122:31921/movies/recommendedMovies', {
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token'),
+                'Accept': 'application/json'
+            }),
+            method: "GET",
+            mode: "cors",
+        })
             .then(resp => resp.json())
             .then(data => {
                 setItems(data.data);
@@ -68,7 +68,7 @@ function RecommendedMovies() {
     return <MoviesCapsule movies={items} title="پیشنهاد ها" />;
 }
 
-function WatchlistPage({notify}) {
+function WatchlistPage({ notify }) {
     console.log('token:' + localStorage.getItem('token'))
 
     const navigate = useNavigate();

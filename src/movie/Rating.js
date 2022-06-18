@@ -5,7 +5,7 @@ const Rate = ({ movie, notify }) => {
   const navigate = useNavigate();
   async function rateMovie(event) {
     const response = await fetch(
-      "http://127.0.0.1:8080/movies/" + movie.id + "/rate",
+      "http://87.247.185.122:31921/movies/" + movie.id + "/rate",
       {
         headers: new Headers({
           'Content-Type': 'application/json',

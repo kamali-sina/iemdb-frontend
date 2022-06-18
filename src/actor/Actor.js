@@ -4,20 +4,20 @@ import Navbar from "../components/Navbar";
 import "../styles/actor.css";
 import ActorImage from "./ActorImage";
 import ActorInformation from "./ActorInformation";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 
 function ActorInformationClass({ id, actor, notify }) {
   const [items, setItems] = useState([]);
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
   function doFetch() {
-    fetch("http://127.0.0.1:8080/movies/actors/" + id, {
-        headers: new Headers({
-            'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('token'),
-            'Accept': 'application/json'
-        }),
-      })
+    fetch("http://87.247.185.122:31921/movies/actors/" + id, {
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token'),
+        'Accept': 'application/json'
+      }),
+    })
       .then((resp) => resp.json())
       .then((data) => {
         setItems(data.data);
@@ -46,13 +46,13 @@ function Actor({ id, notify }) {
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
   function doFetch() {
-    fetch("http://127.0.0.1:8080/actors/" + id, {
-        headers: new Headers({
-            'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('token'),
-            'Accept': 'application/json'
-        }),
-      })
+    fetch("http://87.247.185.122:31921/actors/" + id, {
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token'),
+        'Accept': 'application/json'
+      }),
+    })
       .then((resp) => resp.json())
       .then((data) => {
         setItems(data.data);

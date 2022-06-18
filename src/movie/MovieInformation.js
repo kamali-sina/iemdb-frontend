@@ -5,7 +5,7 @@ import Rating from "./Rating";
 const AddToWatchlist = ({ movieId, notify }) => {
   const navigate = useNavigate();
   async function addToWatchlist(event) {
-    const response = await fetch("http://127.0.0.1:8080/users/watchlist", {
+    const response = await fetch("http://87.247.185.122:31921/users/watchlist", {
       headers: new Headers({
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token'),

@@ -1,9 +1,9 @@
 import '../styles/localbootstrap.scss';
 import React, { useState, useEffect } from 'react';
 import IemdbLogo from './IemdbLogo';
-import { useNavigate, useSearchParams } from "react-router-dom"; 
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-function CallbackPage({notify}) {
+function CallbackPage({ notify }) {
     const navigate = useNavigate();
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(null)
     const [doOnce, setDoOnce] = useState(false)
@@ -11,13 +11,15 @@ function CallbackPage({notify}) {
 
     async function doFetch(code) {
         setDoOnce(true);
-        const response = await fetch('http://127.0.0.1:8080/callback/', { 
-            headers: {'Content-Type': 'application/json', 
-                      'Accept': 'application/json'},
-            method: 'POST', 
-            mode: 'cors', 
+        const response = await fetch('http://87.247.185.122:31921/callback/', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            method: 'POST',
+            mode: 'cors',
             redirect: 'follow',
-            body: JSON.stringify({ "code": code })       
+            body: JSON.stringify({ "code": code })
         });
         const data = await response.json();
         console.log('tokes: ' + data.status + ': ' + data.data);

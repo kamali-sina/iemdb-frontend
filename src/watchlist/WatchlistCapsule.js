@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { useNavigate } from "react-router-dom"; 
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 function CapsuleImage(props) {
     return (
@@ -50,15 +50,15 @@ function CapsuleMovieInfo(props) {
 
     async function handleSubmit(event, movieId) {
         event.preventDefault();
-        const response = await fetch('http://127.0.0.1:8080/users/watchlist', { 
+        const response = await fetch('http://87.247.185.122:31921/users/watchlist', {
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': localStorage.getItem('token'),
                 'Accept': 'application/json'
             }),
             method: 'DELETE',
-            mode: 'cors', 
-            body: JSON.stringify({ "movieId": movieId })       
+            mode: 'cors',
+            body: JSON.stringify({ "movieId": movieId })
         })
         const data = await response.json();
         console.log(JSON.stringify({ "movieId": movieId }))
@@ -74,7 +74,7 @@ function CapsuleMovieInfo(props) {
     return (
         <div className="movie-info">
             <div className="trash-icon">
-                <button onClick={(event) => {handleSubmit(event, props.movie.id)}}>
+                <button onClick={(event) => { handleSubmit(event, props.movie.id) }}>
                     <i className="fa fa-trash custome-trash-icon"></i>
                 </button>
             </div>
@@ -108,7 +108,7 @@ function CapsuleMovieInfo(props) {
 }
 
 
-function WatchlistCapsule({movie, notify}) {
+function WatchlistCapsule({ movie, notify }) {
     return (
         <div className="capsule">
             <CapsuleImage movie={movie} />

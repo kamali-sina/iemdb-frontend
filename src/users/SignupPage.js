@@ -1,33 +1,33 @@
 import '../styles/localbootstrap.scss';
 import React, { useState, useEffect } from 'react';
 import IemdbLogo from './IemdbLogo';
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 
-function SignupForm({notify}) {
+function SignupForm({ notify }) {
     const navigate = useNavigate();
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const [birthdate, setBirthdate] = useState('')
     const [username, setUsername] = useState('')
     const [name, setName] = useState('')
-  
-    function handleEmailChange (event) {    
+
+    function handleEmailChange(event) {
         setEmail(event.target.value);
     }
 
-    function handlePasswordChange(event) {    
+    function handlePasswordChange(event) {
         setPassword(event.target.value);
     }
 
-    function handleBirthdateChange(event) {    
+    function handleBirthdateChange(event) {
         setBirthdate(event.target.value);
     }
 
-    function handleUsernamehange(event) {    
+    function handleUsernamehange(event) {
         setUsername(event.target.value);
     }
 
-    function handleNameChange(event) {    
+    function handleNameChange(event) {
         setName(event.target.value);
     }
 
@@ -37,17 +37,18 @@ function SignupForm({notify}) {
             notify("Error: fields cannot be empty")
             return
         }
-        const response = await fetch('http://127.0.0.1:8080/users/signup', { 
-            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-            method: 'POST', 
-            mode: 'cors', 
+        const response = await fetch('http://87.247.185.122:31921/users/signup', {
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            method: 'POST',
+            mode: 'cors',
             redirect: 'follow',
-            body: JSON.stringify({ "email": email, 
-                                   "password": password,
-                                   "username": username,
-                                   "birthdate": birthdate,
-                                   "name": name
-                                })       
+            body: JSON.stringify({
+                "email": email,
+                "password": password,
+                "username": username,
+                "birthdate": birthdate,
+                "name": name
+            })
         });
         const data = await response.json();
         console.log('A name was submitted: ' + data.status + ': ' + data.data);
@@ -65,53 +66,53 @@ function SignupForm({notify}) {
             <form onSubmit={handleSubmit}>
                 <div className="form-outline mb-4">
                     <input
-                    className="form-control form-control-lg"
-                    id="name"
-                    name="name"
-                    value={name} onChange={handleNameChange}
+                        className="form-control form-control-lg"
+                        id="name"
+                        name="name"
+                        value={name} onChange={handleNameChange}
                     />
                     <label className="form-label" for="form1Example13">Name</label>
                 </div>
 
                 <div className="form-outline mb-4">
                     <input
-                    className="form-control form-control-lg"
-                    id="username"
-                    name="username"
-                    value={username} onChange={handleUsernamehange}
+                        className="form-control form-control-lg"
+                        id="username"
+                        name="username"
+                        value={username} onChange={handleUsernamehange}
                     />
                     <label className="form-label" for="form1Example13">Username</label>
                 </div>
 
                 <div className="form-outline mb-4">
                     <input
-                    className="form-control form-control-lg"
-                    id="birthdate"
-                    name="birthdate"
-                    type="date"
-                    value={birthdate} onChange={handleBirthdateChange}
+                        className="form-control form-control-lg"
+                        id="birthdate"
+                        name="birthdate"
+                        type="date"
+                        value={birthdate} onChange={handleBirthdateChange}
                     />
                     <label className="form-label" for="form1Example13">Birthdate</label>
                 </div>
 
                 <div className="form-outline mb-4">
                     <input
-                    className="form-control form-control-lg"
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={email} onChange={handleEmailChange}
+                        className="form-control form-control-lg"
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={email} onChange={handleEmailChange}
                     />
                     <label className="form-label" for="form1Example13">Email address</label>
                 </div>
 
                 <div className="form-outline mb-4">
                     <input
-                    className="form-control form-control-lg"
-                    id="password"
-                    name="password"
-                    type="password"
-                    value={password} onChange={handlePasswordChange}
+                        className="form-control form-control-lg"
+                        id="password"
+                        name="password"
+                        type="password"
+                        value={password} onChange={handlePasswordChange}
                     />
                     <label className="form-label" for="form1Example23">Password</label>
                 </div>
@@ -121,13 +122,13 @@ function SignupForm({notify}) {
                 </button>
 
                 <div>
-                    <a style={{marginTop : 10}} class="btn btn-block btn-warning" href="https://github.com/login/oauth/authorize?client_id=919a25257e88693e77ab&scope=user">
+                    <a style={{ marginTop: 10 }} class="btn btn-block btn-warning" href="https://github.com/login/oauth/authorize?client_id=919a25257e88693e77ab&scope=user">
                         <span class="fa fa-github"></span> Sign in with Github
                     </a>
                 </div>
 
                 <div>
-                    <a style={{marginTop : 10}} class="btn btn-block btn-warning" href="/login">
+                    <a style={{ marginTop: 10 }} class="btn btn-block btn-warning" href="/login">
                         <span class="fa fa-user"></span> Already have an account? login.
                     </a>
                 </div>
@@ -136,7 +137,7 @@ function SignupForm({notify}) {
     );
 }
 
-function SignupPage({notify}) {
+function SignupPage({ notify }) {
     const navigate = useNavigate();
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(null)
 

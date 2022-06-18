@@ -5,12 +5,12 @@ const Vote = ({ comment, notify }) => {
   const navigate = useNavigate();
   async function voteComment(event) {
     const response = await fetch(
-      "http://127.0.0.1:8080/comments/" + comment.id + "/vote",
+      "http://87.247.185.122:31921/comments/" + comment.id + "/vote",
       {
         headers: new Headers({
-            'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('token'),
-            'Accept': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('token'),
+          'Accept': 'application/json'
         }),
         method: "POST",
         mode: "cors",

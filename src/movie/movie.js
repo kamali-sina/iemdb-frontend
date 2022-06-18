@@ -7,7 +7,7 @@ import Information from "./MovieInformation";
 import Wallpaper from "./MovieWallpaper";
 import { useParams } from "react-router-dom";
 import CommentsCapsule from "./MovieCommentCapsule";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 
 function ActorsCapsule({ id, notify }) {
@@ -15,13 +15,13 @@ function ActorsCapsule({ id, notify }) {
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
   function doFetch() {
-    fetch("http://127.0.0.1:8080/movies/" + id + "/actors", {
-        headers: new Headers({
-            'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('token'),
-            'Accept': 'application/json'
-        }),
-      })
+    fetch("http://87.247.185.122:31921/movies/" + id + "/actors", {
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token'),
+        'Accept': 'application/json'
+      }),
+    })
       .then((resp) => resp.json())
       .then((data) => {
         setItems(data.data);
@@ -61,13 +61,13 @@ function Movie({ id, notify }) {
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
   function doFetch() {
-    fetch("http://127.0.0.1:8080/movies/" + id, {
+    fetch("http://87.247.185.122:31921/movies/" + id, {
       headers: new Headers({
-          'Content-Type': 'application/json',
-          'Authorization': localStorage.getItem('token'),
-          'Accept': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token'),
+        'Accept': 'application/json'
       }),
-      })
+    })
       .then((resp) => resp.json())
       .then((data) => {
         setItems(data.data);
@@ -99,7 +99,7 @@ function MoviePage({ notify }) {
       navigate('/login')
     }
   }, [isUserLoggedIn])
-  
+
   if (isUserLoggedIn === true) {
     return (
       <div>
